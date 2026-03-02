@@ -1,7 +1,7 @@
 # 🌙 Ramadhan Portal 2026
 
 > **Challenge 1 - Alhazen Academy Ramadhan Coding Challenge**
-
+### LIVE REVIEW PROJECT: https://ramadhan-challenge-rks.vercel.app/
 <div align="center">
 
 ![Ramadhan 2026](https://img.shields.io/badge/Ramadhan-1447H-emerald?style=for-the-badge)
@@ -22,6 +22,7 @@
 **Ramadhan Portal** adalah website portal ibadah modern yang dirancang khusus untuk membantu umat Muslim dalam menjalani ibadah Ramadhan dengan lebih khusyuk dan terorganisir. Website ini menyediakan kumpulan doa-doa Ramadhan lengkap dengan teks Arab, latin, dan artinya dalam antarmuka yang elegan dan responsif.
 
 Proyek ini dibuat sebagai solusi untuk **Challenge 1 Alhazen Academy Ramadhan Coding Challenge**, mengimplementasikan prinsip desain web modern menggunakan HTML5 semantik dan CSS3 murni tanpa ketergantungan framework berat.
+
 
 ---
 
