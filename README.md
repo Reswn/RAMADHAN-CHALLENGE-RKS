@@ -1,7 +1,7 @@
 # 🌙 Ramadhan Portal 2026
 
-> **Challenge 1 - Alhazen Academy Ramadhan Coding Challenge**
-### LIVE REVIEW PROJECT: https://ramadhan-challenge-rks.vercel.app/
+> **Challenge 1 & 2 - Alhazen Academy Ramadhan Coding Challenge**
+### LIVE REVIEW PROJECT: https://ramadhan-challenge2-rks-v19f.vercel.app/zikir.html
 <div align="center">
 
 ![Ramadhan 2026](https://img.shields.io/badge/Ramadhan-1447H-emerald?style=for-the-badge)
@@ -46,6 +46,17 @@ Kumpulan doa lengkap dengan sistem **Expandable Card** (klik untuk buka/tutup):
 - **⭐ Section Malam Ramadhan**
   - Doa Lailatul Qadar (10 Malam Terakhir)
   - Doa Memohon Ampunan (Setiap Waktu)
+  - 
+### 📿 Halaman Hitung Zikir (`zikir.html`) 🆕
+**Counter zikir interaktif dengan fitur lengkap:**
+- Counter Display: Angka besar dalam lingkaran gradient
+- Target Adjustment: Tombol +/- untuk ubah target
+- Progress Bar: Visual progress dengan warna dinamis
+- Notification: Popup "Target Tercapai!" dengan confetti
+- Stats Cards: Total Zikir, Streak Hari, Target Completed
+- 12 Zikir Options: Dengan lafal Arab, arti, dan fadhilah
+- Fadhilah Section: Keutamaan masing-masing zikir dengan dalil
+- Benefits Grid: 4 keutamaan umum berzikir
 
 ### Desain & UX
 - ✅ **Fully Responsive:** Tampilan optimal di Mobile, Tablet, dan Desktop.
