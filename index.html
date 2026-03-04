@@ -30,18 +30,76 @@
     <header class="navbar">
       <div class="container nav-wrapper">
         <a href="#" class="logo">
-          <img src="assets/logo.png" alt="" />
+          <img src="assets/logo.png" alt="Ramadhan Space Logo" />
           Ramadhan Space
         </a>
 
         <nav class="nav-menu">
           <a href="#" class="active">Beranda</a>
           <a href="doa.html">Doa</a>
+          <a href="zikir.html">Zikir</a>
         </nav>
 
         <a href="#" class="btn-nav">Mulai</a>
+
+        <!-- Dark Mode Toggle -->
+        <button
+          class="dark-mode-toggle"
+          onclick="toggleDarkMode()"
+          title="Mode Gelap"
+        >
+          <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+        </button>
+
+        <!-- Hamburger Button u/ sidebar -->
+        <button
+          class="hamburger"
+          onclick="toggleSidebar()"
+          aria-label="Toggle Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
+
+    <!-- SIDEBAR OVERLAY & NAVIGATION (Mobile) -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="bi bi-moon-stars-fill"></i>
+        Ramadhan Space
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#" class="active">
+          <i class="bi bi-house"></i>
+          Beranda
+        </a>
+        <a href="doa.html">
+          <i class="bi bi-book"></i>
+          Doa
+        </a>
+        <a href="zikir.html">
+          <i class="bi bi-brightness-low"></i>
+          Zikir
+        </a>
+      </nav>
+
+      <!-- Dark Mode Toggle in Sidebar -->
+      <div class="sidebar-dark-mode">
+        <button class="btn-dark-mode-sidebar" onclick="toggleDarkMode()">
+          <i class="bi bi-moon-fill" id="sidebarDarkModeIcon"></i>
+          <span>Mode Gelap</span>
+        </button>
+      </div>
+
+      <div class="sidebar-btn">
+        <a href="#" class="btn-nav" onclick="toggleSidebar()">Mulai</a>
+      </div>
+    </aside>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -50,8 +108,8 @@
           <span class="badge">Ramadhan 1447 H</span>
           <h1>Portal Ibadah <span>Ramadhan Space</span></h1>
           <p>
-            Akses doa-doa selama Ramadhan dalam satu platform elegan dan nyaman
-            digunakan. Tingkatkan kualitas ibadahmu di bulan suci.
+            Akses doa-doa dan zikir selama Ramadhan dalam satu platform elegan
+            dan nyaman digunakan. Tingkatkan kualitas ibadahmu di bulan suci.
           </p>
 
           <div class="hero-buttons">
@@ -62,23 +120,19 @@
 
         <div class="hero-right">
           <div class="hero-image-wrapper">
-            <div class="hero-right">
-              <div class="hero-image-wrapper">
-                <img
-                  src="assets/mosque.jpg"
-                  alt="Ilustrasi Ramadhan"
-                  class="hero-image"
-                />
+            <img
+              src="assets/mosque.jpg"
+              alt="Ilustrasi Ramadhan"
+              class="hero-image"
+            />
 
-                <div class="floating-card card-1">
-                  <span class="floating-card-icon" aria-hidden="true">
-                    <i class="bi bi-moon"></i>
-                  </span>
-                  <div>
-                    <div class="floating-card-text">30 Hari</div>
-                    <div class="floating-card-sub">Puasa Ramadhan</div>
-                  </div>
-                </div>
+            <div class="floating-card card-1">
+              <span class="floating-card-icon" aria-hidden="true">
+                <i class="bi bi-moon"></i>
+              </span>
+              <div>
+                <div class="floating-card-text">30 Hari</div>
+                <div class="floating-card-sub">Puasa Ramadhan</div>
               </div>
             </div>
 
@@ -105,7 +159,7 @@
               <i class="bi bi-calendar3 icon-md"></i>
             </div>
             <div class="date-card-label">Tanggal Masehi</div>
-            <div class="date-card-value">Senin, 02 Maret 2026</div>
+            <div class="date-card-value">Rabu, 04 Maret 2026</div>
           </div>
 
           <div class="date-card">
@@ -113,7 +167,7 @@
               <i class="bi bi-moon icon-md"></i>
             </div>
             <div class="date-card-label">Tanggal Hijriah</div>
-            <div class="date-card-value hijri">13 Ramadhan 1447 H</div>
+            <div class="date-card-value hijri">15 Ramadhan 1447 H</div>
           </div>
 
           <div class="date-card">
@@ -121,7 +175,7 @@
               <i class="bi bi-hourglass-split icon-md"></i>
             </div>
             <div class="date-card-label">Menuju Syawal</div>
-            <div class="date-card-value">17 Hari Lagi</div>
+            <div class="date-card-value">15 Hari Lagi</div>
           </div>
         </div>
       </div>
@@ -131,7 +185,9 @@
     <section class="doa-preview-section" id="doa-preview">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">Doa Pilihan</span>
+          <h1>
+            <span class="section-subtitle">Doa Pilihan</span>
+          </h1>
           <h2 class="section-title">Doa Hari Ini</h2>
           <p class="section-desc">
             Bacaan doa yang dapat kamu amalkan hari ini untuk keberkahan
@@ -219,11 +275,14 @@
           <span class="section-subtitle">Fitur Unggulan</span>
           <h2 class="section-title">Fitur Utama</h2>
           <p class="section-desc">
-            Fokus pada kumpulan doa lengkap untuk memperkuat ibadah Ramadhanmu.
+            Semua yang kamu butuhkan untuk menjalani Ramadhan dengan lebih
+            khusyuk dan terorganisir.
           </p>
         </div>
 
+        <!-- Feature Grid -->
         <div class="feature-grid">
+          <!-- Feature 1 Kumpulan Doa -->
           <div class="feature-card">
             <div class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none">
@@ -238,10 +297,39 @@
             <h3>Kumpulan Doa Ramadhan</h3>
             <p>
               Akses lengkap doa sahur, buka puasa, dan doa malam Ramadhan dengan
-              teks Arab, latin, dan artinya yang jelas dan mudah dibaca.
+              teks Arab, latin, dan artinya serta penghitung zikir yang jelas
+              dan mudah dibaca.
             </p>
             <a href="doa.html" class="feature-link">
               Lihat Semua Doa
+              <span class="icon-circle">
+                <i class="bi bi-arrow-right"></i>
+              </span>
+            </a>
+          </div>
+
+          <!-- Feature 2 Hitung Zikir -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2v20M2 12h20"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="12" cy="12" r="9" stroke-width="2" />
+                <path d="M12 7v5l3 3" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3>Hitung Zikir Interaktif</h3>
+            <p>
+              Penghitung zikir digital dengan target harian, statistik, dan
+              notifikasi saat target tercapai. Bantu kamu konsisten berzikir
+              setiap hari.
+            </p>
+            <a href="zikir.html" class="feature-link">
+              Mulai Berzikir
               <span class="icon-circle">
                 <i class="bi bi-arrow-right"></i>
               </span>
@@ -268,7 +356,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <h4><span>☾</span> Ramadhan Space</h4>
+            <h4><i class="bi bi-moon-stars-fill"></i> Ramadhan Space</h4>
             <p>
               Portal ibadah modern untuk membantu kamu menjalani Ramadhan 2026
               dengan lebih khusyuk dan terorganisir.
@@ -277,16 +365,25 @@
 
           <div class="footer-links">
             <h4>Navigasi</h4>
-            <a href="#">Beranda</a>
-            <a href="doa.html">Doa</a>
+            <a href="#"><i class="bi bi-house"></i> Beranda</a>
+            <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
+            <a href="zikir.html"><i class="bi bi-brightness-low"></i>Zikir</a>
           </div>
 
           <div class="footer-links">
             <h4>Ikuti Kami</h4>
-            <a href="https://www.instagram.com/xyzhunnn_/">Instagram</a>
-            <a href="https://www.instagram.com/xyzhunnn_/">Twitter</a>
-            <a href="https://www.instagram.com/xyzhunnn_/">Facebook</a>
-            <a href="https://www.instagram.com/xyzhunnn_/">YouTube</a>
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-instagram"></i> Instagram</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-twitter-x"></i> Twitter</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-facebook"></i> Facebook</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-youtube"></i> YouTube</a
+            >
           </div>
         </div>
 
@@ -302,18 +399,15 @@
             >
               <i class="bi bi-instagram icon-social"></i>
             </a>
-
             <a href="https://www.instagram.com/xyzhunnn_/" aria-label="Twitter">
               <i class="bi bi-twitter-x icon-social"></i>
             </a>
-
             <a
               href="https://www.instagram.com/xyzhunnn_/"
               aria-label="Facebook"
             >
               <i class="bi bi-facebook icon-social"></i>
             </a>
-
             <a href="https://www.instagram.com/xyzhunnn_/" aria-label="YouTube">
               <i class="bi bi-youtube icon-social"></i>
             </a>
@@ -321,5 +415,83 @@
         </div>
       </div>
     </footer>
+    <!-- JS FOR DARKMODE -->
+    <script>
+      // DARK MODE
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        // Update icons
+        const icons = document.querySelectorAll(
+          "#darkModeIcon, #sidebarDarkModeIcon"
+        );
+        icons.forEach((icon) => {
+          if (isDark) {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          } else {
+            icon.classList.remove("bi-sun-fill");
+            icon.classList.add("bi-moon-fill");
+          }
+        });
+
+        // Save preference
+        localStorage.setItem("darkMode", isDark);
+      }
+
+      // Load dark mode preference
+      function loadDarkMode() {
+        const isDark = localStorage.getItem("darkMode") === "true";
+        if (isDark) {
+          document.body.classList.add("dark-mode");
+          const icons = document.querySelectorAll(
+            "#darkModeIcon, #sidebarDarkModeIcon"
+          );
+          icons.forEach((icon) => {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          });
+        }
+      }
+
+      // SIDEBAR FUNCTIONALITY
+      function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".sidebar-overlay");
+        const hamburger = document.querySelector(".hamburger");
+
+        if (sidebar && overlay && hamburger) {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+          hamburger.classList.toggle("active");
+
+          if (sidebar.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "";
+          }
+        }
+      }
+
+      // Close sidebar when we click
+      document.querySelectorAll(".sidebar-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleSidebar();
+        });
+      });
+
+      // Close sidebar on esc
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          toggleSidebar();
+        }
+      });
+
+      // Load dark mode on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        loadDarkMode();
+      });
+    </script>
   </body>
 </html>

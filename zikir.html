@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitung Zikir - Ramadhan Space 2026</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.13/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/amiri@5.0.2/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page-zikir">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="Ramadhan Space Logo" />
+          Ramadhan Space
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html">Beranda</a>
+          <a href="doa.html">Doa</a>
+          <a href="hitung-zikir.html" class="active">Zikir</a>
+        </nav>
+
+        <a href="#" class="btn-nav">Mulai</a>
+
+        <button
+          class="dark-mode-toggle"
+          onclick="toggleDarkMode()"
+          title="Mode Gelap"
+        >
+          <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+        </button>
+
+        <button
+          class="hamburger"
+          onclick="toggleSidebar()"
+          aria-label="Toggle Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Responsive SIDEBAR OVERLAY NAVIGATION (Mobile) -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="bi bi-moon-stars-fill"></i>
+        Ramadhan Space
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="index.html">
+          <i class="bi bi-house"></i>
+          Beranda
+        </a>
+        <a href="doa.html">
+          <i class="bi bi-book"></i>
+          Doa
+        </a>
+        <a href="hitung-zikir.html" class="active">
+          <i class="bi bi-brightness-low"></i>
+          Zikir
+        </a>
+      </nav>
+
+      <div class="sidebar-dark-mode">
+        <button class="btn-dark-mode-sidebar" onclick="toggleDarkMode()">
+          <i class="bi bi-moon-fill" id="sidebarDarkModeIcon"></i>
+          <span>Mode Gelap</span>
+        </button>
+      </div>
+
+      <div class="sidebar-btn">
+        <a href="#" class="btn-nav" onclick="toggleSidebar()">Mulai</a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="zikir-section">
+        <div class="container">
+          <!-- Page Header -->
+          <div class="zikir-header">
+            <span class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</span>
+            <h1>Hitung Zikir</h1>
+            <p>Perbanyak zikir untuk ketenangan hati</p>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-overview">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="bi bi-fire"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="totalZikir">0</span>
+                <span class="stat-label">Total Zikir</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="currentStreak">0</span>
+                <span class="stat-label">Hari Berturut</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="targetCompleted">0</span>
+                <span class="stat-label">Target Selesai</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Counter Container -->
+          <div class="zikir-container">
+            <!-- Selected Zikir Display -->
+            <div class="selected-zikir-display">
+              <div class="zikir-label">
+                <i class="bi bi-bookmark-heart-fill"></i>
+                <span>Zikir Dipilih:</span>
+              </div>
+              <div class="zikir-name" id="selectedZikirName">
+                <span class="placeholder">Pilih zikir dari daftar bawah</span>
+              </div>
+              <div class="zikir-arabic" id="selectedZikirArabic"></div>
+            </div>
+
+            <!-- Counter Display -->
+            <div class="counter-display">
+              <div class="counter-circle">
+                <span id="counter">0</span>
+              </div>
+              <div class="counter-label">
+                <i class="bi bi-hand-thumbs-up"></i>
+                <span>Jumlah Zikir</span>
+              </div>
+            </div>
+
+            <!-- Target Display -->
+            <div class="target-display">
+              <div class="target-info">
+                <i class="bi bi-flag-fill"></i>
+                <span>Target</span>
+              </div>
+              <div class="target-value">
+                <span id="target">33</span>
+              </div>
+              <div class="target-actions">
+                <button
+                  class="btn-target"
+                  onclick="changeTarget(1)"
+                  title="Tambah Target"
+                >
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+                <button
+                  class="btn-target"
+                  onclick="changeTarget(-1)"
+                  title="Kurangi Target"
+                >
+                  <i class="bi bi-dash-lg"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="control-buttons">
+              <button class="btn-reset" onclick="resetCounter()">
+                <i class="bi bi-arrow-counterclockwise"></i>
+                <span>Reset</span>
+              </button>
+              <button class="btn-add" onclick="addCount()" id="btnAdd">
+                <i class="bi bi-plus-circle-fill"></i>
+                <span>Tambah</span>
+              </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-text">
+                <span id="progressPercent">0%</span>
+              </div>
+            </div>
+
+            <!-- Notification Area -->
+            <div class="notification" id="notification">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Target Tercapai!</span>
+            </div>
+          </div>
+
+          <!-- FADHILAH SECTION -->
+          <div class="fadhilah-section" id="fadhilahSection">
+            <h3><i class="bi bi-journal-bookmark-fill"></i> Zikir</h3>
+
+            <div class="zikir-lafal-container">
+              <div class="zikir-lafal-header">
+                <i class="bi bi-quote-lg"></i>
+                <span>Lafal Zikir</span>
+              </div>
+
+              <div class="zikir-lafal-arabic" id="fadhilahArabic">
+                Pilih zikir untuk melihat lafal
+              </div>
+
+              <div class="zikir-lafal-translation" id="fadhilahTranslation">
+                Pilih zikir untuk melihat arti
+              </div>
+            </div>
+
+            <div class="fadhilah-content">
+              <div class="fadhilah-icon">
+                <i class="bi bi-lightbulb-fill"></i>
+              </div>
+              <div class="fadhilah-details">
+                <p class="fadhilah-text" id="fadhilahText">
+                  Pilih salah satu zikir di bawah untuk melihat keutamaannya.
+                </p>
+                <div class="fadhilah-reference" id="fadhilahReference"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zikir Pilihan -->
+          <div class="zikir-suggestions">
+            <h3><i class="bi bi-lightbulb"></i> Pilih Zikir untuk Dihitung</h3>
+            <p class="suggestions-desc">
+              Klik salah satu zikir di bawah untuk memulai
+            </p>
+
+            <div class="suggestion-grid">
+              <!-- Tasbih -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Subhanallah", "سبحان الله", "Maha Suci Allah", 33, "Dzikir ini membersihkan hati dari sifat sombong. Rasulullah ﷺ bersabda: Dua kalimat ringan di lisan, berat di timbangan: Subhanallah wa bihamdih, Subhanallahil Adzim. (HR. Bukhari & Muslim)")'
+              >
+                <div class="suggestion-icon tasbih">
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Subhanallah</h4>
+                  <p class="arabic-text">سبحان الله</p>
+                  <p class="count-target">33x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Tahmid -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Alhamdulillah", "الحمد لله", "Segala puji bagi Allah", 33, "Mengucapkan syukur atas segala nikmat Allah. Rasulullah ﷺ bersabda: Alhamdulillah memenuhi timbangan. (HR. Muslim)")'
+              >
+                <div class="suggestion-icon tahmid">
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Alhamdulillah</h4>
+                  <p class="arabic-text">الحمد لله</p>
+                  <p class="count-target">33x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Takbir -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Allahu Akbar", "الله أكبر", "Allah Maha Besar", 33, "Mengagungkan kebesaran Allah. Rasulullah ﷺ mengajarkan takbir sebagai dzikir pagi petang.")'
+              >
+                <div class="suggestion-icon takbir">
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Allahu Akbar</h4>
+                  <p class="arabic-text">الله أكبر</p>
+                  <p class="count-target">33x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Tahlil -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("La ilaha illallah", "لا إله إلا الله", "Tiada Tuhan selain Allah", 100, "Sebaik-baik dzikir. Rasulullah ﷺ bersabda: Barangsiapa mengucapkan La ilaha illallah akan masuk surga. (HR. Ahmad)")'
+              >
+                <div class="suggestion-icon tahlil">
+                  <i class="bi bi-moon-stars-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>La ilaha illallah</h4>
+                  <p class="arabic-text">لا إله إلا الله</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Istighfar -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Astaghfirullah", "أستغفر الله", "Aku mohon ampun kepada Allah", 100, "Membersihkan dosa. Rasulullah ﷺ bersabda: Barangsiapa memperbanyak istighfar, Allah berikan jalan keluar. (HR. Abu Daud)")'
+              >
+                <div class="suggestion-icon istighfar">
+                  <i class="bi bi-cloud-drizzle-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Astaghfirullah</h4>
+                  <p class="arabic-text">أستغفر الله</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Hawqalah -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("La hawla wa la quwwata", "لا حول ولا قوة إلا بالله", "Tiada daya kecuali dengan pertolongan Allah", 100, "Menyerahkan urusan kepada Allah. Rasulullah ﷺ bersabda: Ini adalah perbendaharaan surga. (HR. Bukhari & Muslim)")'
+              >
+                <div class="suggestion-icon hawqalah">
+                  <i class="bi bi-shield-shaded"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>La hawla wa la quwwata</h4>
+                  <p class="arabic-text">لا حول ولا قوة إلا بالله</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Sholawat -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Sholawat Nabi", "اللهم صل على محمد", "Ya Allah, limpahkan rahmat kepada Nabi Muhammad", 100, "Mendapatkan syafaat Nabi. Allah ﷻ berfirman: Sesungguhnya Allah dan para malaikat-Nya bersholawat untuk Nabi. (QS. Al-Ahzab: 56)")'
+              >
+                <div class="suggestion-icon sholawat">
+                  <i class="bi bi-heart-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Sholawat Nabi</h4>
+                  <p class="arabic-text">اللهم صل على محمد</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Subhanallah wa bihamdihi -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Subhanallah wa bihamdihi", "سبحان الله وبحمده", "Maha Suci Allah dan segala puji bagi-Nya", 100, "Dzikir ringan di lisan, berat di timbangan. Rasulullah ﷺ bersabda: 100 kali sehari, diampuni dosa walaupun sebanyak buih di lautan. (HR. Bukhari & Muslim)")'
+              >
+                <div class="suggestion-icon tasbih">
+                  <i class="bi bi-award-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Subhanallah wa bihamdihi</h4>
+                  <p class="arabic-text">سبحان الله وبحمده</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- La ilaha illa anta -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("La ilaha illa anta", "لا إله إلا أنت سبحانك", "Tidak ada Tuhan selain Engkau", 100, "Doa Nabi Yunus yang mustajab. Allah ﷻ berfirman: Maka Kami kabulkan doanya. (QS. Al-Anbiya: 87-88)")'
+              >
+                <div class="suggestion-icon tahlil">
+                  <i class="bi bi-lightning-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>La ilaha illa anta</h4>
+                  <p class="arabic-text">لا إله إلا أنت سبحانك</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Hasbunallah -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Hasbunallah", "حسبنا الله ونعم الوكيل", "Cukuplah Allah menjadi penolong", 100, "Memberikan ketenangan. Allah ﷻ berfirman tentang Ibrahim: Wahai api, jadilah dingin. (QS. Al-Anbiya: 68-69)")'
+              >
+                <div class="suggestion-icon hawqalah">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Hasbunallah</h4>
+                  <p class="arabic-text">حسبنا الله ونعم الوكيل</p>
+                  <p class="count-target">100x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Masya Allah -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Masya Allah", "ما شاء الله", "Apa yang dikehendaki Allah", 50, "Melindungi dari hasad. Allah ﷻ berfirman: Mengapa tidak berkata Masya Allah. (QS. Al-Kahf: 39)")'
+              >
+                <div class="suggestion-icon tahmid">
+                  <i class="bi bi-sun-fill"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Masya Allah</h4>
+                  <p class="arabic-text">ما شاء الله</p>
+                  <p class="count-target">50x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+
+              <!-- Bismillah -->
+              <div
+                class="suggestion-card"
+                onclick='setZikir("Bismillah", "بسم الله", "Dengan nama Allah", 50, "Membuka pintu keberkahan. Rasulullah ﷺ bersabda: Setiap urusan penting yang tidak dimulai dengan Bismillah terputus. (HR. Abu Daud)")'
+              >
+                <div class="suggestion-icon tasbih">
+                  <i class="bi bi-book"></i>
+                </div>
+                <div class="suggestion-content">
+                  <h4>Bismillah</h4>
+                  <p class="arabic-text">بسم الله</p>
+                  <p class="count-target">50x</p>
+                </div>
+                <div class="select-indicator">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Keutamaan Berzikir -->
+          <div class="zikir-benefits">
+            <h3><i class="bi bi-info-circle"></i> Keutamaan Berzikir</h3>
+            <div class="benefits-grid">
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="bi bi-heart"></i>
+                </div>
+                <p>Hati menjadi tenang</p>
+                <span class="benefit-ref">(QS. Ar-Ra'd: 28)</span>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <p>Dilindungi dari godaan setan</p>
+                <span class="benefit-ref">(HR. Muslim)</span>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="bi bi-stars"></i>
+                </div>
+                <p>Dosa diampuni Allah</p>
+                <span class="benefit-ref">(HR. Tirmidzi)</span>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="bi bi-trophy"></i>
+                </div>
+                <p>Mendapat pahala besar</p>
+                <span class="benefit-ref">(HR. Muslim)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Button -->
+          <div class="back-home">
+            <a href="index.html" class="btn-back">
+              <i class="bi bi-arrow-left"></i>
+              Kembali ke Beranda
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h4><i class="bi bi-moon-stars-fill"></i> Ramadhan Space</h4>
+            <p>
+              Portal ibadah modern untuk membantu kamu menjalani Ramadhan 2026
+              dengan lebih khusyuk dan terorganisir.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Navigasi</h4>
+            <a href="index.html"><i class="bi bi-house"></i> Beranda</a>
+            <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
+            <a href="hitung-zikir.html"
+              ><i class="bi bi-brightness-low"></i> Zikir</a
+            >
+          </div>
+
+          <div class="footer-links">
+            <h4>Ikuti Kami</h4>
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-instagram"></i> Instagram</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-twitter-x"></i> Twitter</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-facebook"></i> Facebook</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-youtube"></i> YouTube</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="copyright">
+            RENI KARTIKA SUWANDI || © 2026 Ramadhan Space. All rights reserved.
+          </p>
+
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/xyzhunnn_/"
+              aria-label="Instagram"
+            >
+              <i class="bi bi-instagram icon-social"></i>
+            </a>
+            <a href="https://www.instagram.com/xyzhunnn_/" aria-label="Twitter">
+              <i class="bi bi-twitter-x icon-social"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/xyzhunnn_/"
+              aria-label="Facebook"
+            >
+              <i class="bi bi-facebook icon-social"></i>
+            </a>
+            <a href="https://www.instagram.com/xyzhunnn_/" aria-label="YouTube">
+              <i class="bi bi-youtube icon-social"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      //  COUNTER FUNCTION
+      let count = 0;
+      let target = 33;
+      let targetReached = false;
+      let currentZikir = "";
+      let currentZikirArabic = "";
+      let currentZikirTranslation = "";
+      let currentFadhilah = "";
+
+      // Statistik /Statistics
+      let totalZikir = 0;
+      let currentStreak = 0;
+      let targetCompleted = 0;
+      let lastVisitDate = "";
+
+      const counterEl = document.getElementById("counter");
+      const targetEl = document.getElementById("target");
+      const progressFill = document.getElementById("progressFill");
+      const progressPercent = document.getElementById("progressPercent");
+      const notification = document.getElementById("notification");
+      const btnAdd = document.getElementById("btnAdd");
+      const selectedZikirName = document.getElementById("selectedZikirName");
+      const selectedZikirArabic = document.getElementById(
+        "selectedZikirArabic"
+      );
+      const fadhilahArabic = document.getElementById("fadhilahArabic");
+      const fadhilahTranslation = document.getElementById(
+        "fadhilahTranslation"
+      );
+      const fadhilahText = document.getElementById("fadhilahText");
+      const fadhilahReference = document.getElementById("fadhilahReference");
+      const fadhilahSection = document.getElementById("fadhilahSection");
+
+      const totalZikirEl = document.getElementById("totalZikir");
+      const currentStreakEl = document.getElementById("currentStreak");
+      const targetCompletedEl = document.getElementById("targetCompleted");
+
+      // Load data dari Local Storage
+      window.addEventListener("DOMContentLoaded", () => {
+        loadFromLocalStorage();
+        loadDarkMode();
+        checkStreak();
+        updateStatsDisplay();
+      });
+
+      // Save to Local Storage- simpan ke lokal
+      function saveToLocalStorage() {
+        const data = {
+          count,
+          target,
+          currentZikir,
+          currentZikirArabic,
+          currentZikirTranslation,
+          currentFadhilah,
+          totalZikir,
+          currentStreak,
+          targetCompleted,
+          lastVisitDate: new Date().toDateString(),
+        };
+        localStorage.setItem("zikirData", JSON.stringify(data));
+      }
+
+      // Akses dari local
+      function loadFromLocalStorage() {
+        const savedData = localStorage.getItem("zikirData");
+        if (savedData) {
+          const data = JSON.parse(savedData);
+          count = data.count || 0;
+          target = data.target || 33;
+          currentZikir = data.currentZikir || "";
+          currentZikirArabic = data.currentZikirArabic || "";
+          currentZikirTranslation = data.currentZikirTranslation || "";
+          currentFadhilah = data.currentFadhilah || "";
+          totalZikir = data.totalZikir || 0;
+          currentStreak = data.currentStreak || 0;
+          targetCompleted = data.targetCompleted || 0;
+          lastVisitDate = data.lastVisitDate || "";
+
+          if (currentZikir) {
+            selectedZikirName.innerHTML = `<span class="zikir-text">${currentZikir}</span>`;
+            selectedZikirArabic.textContent = currentZikirArabic;
+            fadhilahArabic.textContent = currentZikirArabic;
+            fadhilahTranslation.textContent = currentZikirTranslation;
+            fadhilahText.textContent = currentFadhilah;
+            fadhilahSection.classList.add("active");
+          }
+          targetEl.textContent = target;
+          counterEl.textContent = count;
+          updateDisplay();
+          updateStatsDisplay();
+        }
+      }
+
+      // Ceck streak
+      function checkStreak() {
+        const today = new Date().toDateString();
+        if (lastVisitDate !== today) {
+          const yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
+
+          if (lastVisitDate === yesterday.toDateString()) {
+            currentStreak++;
+          } else {
+            currentStreak = 1;
+          }
+          lastVisitDate = today;
+          saveToLocalStorage();
+        }
+      }
+
+      // Update statistik
+      function updateStatsDisplay() {
+        totalZikirEl.textContent = totalZikir.toLocaleString();
+        currentStreakEl.textContent = currentStreak;
+        targetCompletedEl.textContent = targetCompleted;
+      }
+
+      // Set Zikir w/ (5 parameter)
+      function setZikir(name, arabic, translation, targetCount, fadhilah) {
+        currentZikir = name;
+        currentZikirArabic = arabic;
+        currentZikirTranslation = translation;
+        currentFadhilah = fadhilah;
+        target = targetCount;
+
+        selectedZikirName.innerHTML = `<span class="zikir-text">${name}</span>`;
+        selectedZikirArabic.textContent = arabic;
+
+        fadhilahArabic.textContent = arabic;
+        fadhilahTranslation.textContent = translation;
+        fadhilahText.textContent = fadhilah;
+        fadhilahReference.textContent = "";
+        fadhilahSection.classList.add("active");
+
+        targetEl.textContent = target;
+        resetCounter();
+
+        document.querySelectorAll(".suggestion-card").forEach((card) => {
+          card.classList.remove("active");
+        });
+        event.currentTarget.classList.add("active");
+
+        fadhilahSection.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+
+        saveToLocalStorage();
+
+        btnAdd.classList.add("btn-pressed");
+        setTimeout(() => {
+          btnAdd.classList.remove("btn-pressed");
+        }, 300);
+      }
+
+      // Add Count
+      function addCount() {
+        if (!currentZikir) {
+          selectedZikirName.innerHTML = `<span class="placeholder-highlight">Pilih zikir dulu! 👆</span>`;
+          document.querySelector(".zikir-suggestions").scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+          return;
+        }
+
+        count++;
+        totalZikir++;
+        updateDisplay();
+        updateStatsDisplay();
+
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+
+        btnAdd.classList.add("btn-pressed");
+        setTimeout(() => {
+          btnAdd.classList.remove("btn-pressed");
+        }, 100);
+
+        if (count >= target && !targetReached) {
+          targetReached = true;
+          targetCompleted++;
+          showNotification();
+        }
+
+        saveToLocalStorage();
+      }
+
+      // Reset Counter
+      function resetCounter() {
+        count = 0;
+        targetReached = false;
+        updateDisplay();
+        hideNotification();
+
+        counterEl.classList.add("reset-anim");
+        setTimeout(() => {
+          counterEl.classList.remove("reset-anim");
+        }, 300);
+
+        saveToLocalStorage();
+      }
+
+      // Change Target
+      function changeTarget(value) {
+        target += value;
+        if (target < 1) target = 1;
+        if (target > 999) target = 999;
+        targetEl.textContent = target;
+        updateDisplay();
+        saveToLocalStorage();
+      }
+
+      // Update Display
+      function updateDisplay() {
+        counterEl.textContent = count;
+
+        const percent = Math.min((count / target) * 100, 100);
+        progressFill.style.width = percent + "%";
+        progressPercent.textContent = Math.round(percent) + "%";
+
+        if (percent >= 100) {
+          progressFill.style.background =
+            "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+        } else if (percent >= 50) {
+          progressFill.style.background =
+            "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)";
+        } else {
+          progressFill.style.background =
+            "linear-gradient(135deg, #059669 0%, #10b981 100%)";
+        }
+      }
+
+      // Show Notif
+      function showNotification() {
+        notification.classList.add("show");
+        createConfetti();
+        setTimeout(() => {
+          hideNotification();
+        }, 3000);
+      }
+
+      // Hide Notif
+      function hideNotification() {
+        notification.classList.remove("show");
+      }
+
+      // Party Confetti Effect
+      function createConfetti() {
+        const colors = ["#10b981", "#059669", "#d97706", "#f59e0b", "#ffffff"];
+
+        for (let i = 0; i < 50; i++) {
+          const confetti = document.createElement("div");
+          confetti.classList.add("confetti");
+          confetti.style.left = Math.random() * 100 + "%";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDelay = Math.random() * 0.5 + "s";
+          document.querySelector(".zikir-container").appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 2000);
+        }
+      }
+
+      // Dark Mode
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        const icons = document.querySelectorAll(
+          "#darkModeIcon, #sidebarDarkModeIcon"
+        );
+        icons.forEach((icon) => {
+          if (isDark) {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          } else {
+            icon.classList.remove("bi-sun-fill");
+            icon.classList.add("bi-moon-fill");
+          }
+        });
+
+        localStorage.setItem("darkMode", isDark);
+      }
+
+      function loadDarkMode() {
+        const isDark = localStorage.getItem("darkMode") === "true";
+        if (isDark) {
+          document.body.classList.add("dark-mode");
+          const icons = document.querySelectorAll(
+            "#darkModeIcon, #sidebarDarkModeIcon"
+          );
+          icons.forEach((icon) => {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          });
+        }
+      }
+
+      // Sidebar
+      function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".sidebar-overlay");
+        const hamburger = document.querySelector(".hamburger");
+
+        if (sidebar && overlay && hamburger) {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+          hamburger.classList.toggle("active");
+
+          if (sidebar.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "";
+          }
+        }
+      }
+
+      document.querySelectorAll(".sidebar-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleSidebar();
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          toggleSidebar();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.code === "Space" && document.activeElement.tagName !== "BUTTON") {
+          e.preventDefault();
+          addCount();
+        }
+        if (e.code === "KeyR") {
+          resetCounter();
+        }
+      });
+    </script>
+  </body>
+</html>
