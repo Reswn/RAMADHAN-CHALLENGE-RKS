@@ -169,6 +169,7 @@ ramadhan-space/
 ├── index.html              # Halaman beranda utama
 ├── doa.html                # Halaman kumpulan doa interaktif
 ├── zikir.html         # 🆕 Halaman counter zikir (Challenge 2)
+├── kalkulator-zakat.html         # 🆕 Halaman kalkulator zakat (Challenge 3)
 │
 ├── css/
 │   └── style.css           # Combined stylesheet (Global + All Pages)
@@ -234,120 +235,7 @@ vercel
 | **Tablet**  | 768px - 1024px | 2-3 columns grid, sidebar menu |
 | **Mobile**  | < 768px        | 1 column grid, hamburger menu  |
 
----
-
-## 🎯 Fitur Challenge 2 - Detail Teknis
-
-### Counter Logic
-
-```javascript
-// Add Count
-function addCount() {
-  count++;
-  totalZikir++;
-  updateDisplay();
-  updateStatsDisplay();
-
-  if (count >= target && !targetReached) {
-    targetReached = true;
-    targetCompleted++;
-    showNotification(); // Confetti effect
-  }
-
-  saveToLocalStorage();
-}
-```
-
-### Local Storage Data
-
-```javascript
-{
-  count: 0,              // Counter saat ini
-  target: 33,            // Target zikir
-  currentZikir: '',      // Nama zikir yang dipilih
-  currentZikirArabic: '', // Teks Arab
-  currentFadhilah: '',   // Keutamaan zikir
-  totalZikir: 0,         // Total kumulatif
-  currentStreak: 0,      // Hari berturut-turut
-  targetCompleted: 0,    // Jumlah target selesai
-  lastVisitDate: ''      // Tanggal kunjungan terakhir
-}
-```
-
-### Dark Mode Toggle
-
-```javascript
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const isDark = document.body.classList.contains("dark-mode");
-  localStorage.setItem("darkMode", isDark);
-  // Update icons (moon ↔ sun)
-}
-```
-
----
-
-## 📊 Progress Challenge
-
-### ✅ Challenge 1 - Completed
-
-- [x] Halaman Beranda dengan Hero Section
-- [x] Halaman Doa dengan Expandable Cards
-- [x] Responsive Design (Mobile, Tablet, Desktop)
-- [x] Dark Mode Support
-- [x] Sidebar Navigation
-- [x] Islamic Pattern Background
-- [x] Bootstrap Icons Integration
-
-### ✅ Challenge 2 - Completed
-
-- [x] Counter Zikir Interactive
-- [x] Tombol Tambah dengan Animasi
-- [x] Tombol Reset
-- [x] Target Display dengan Adjust (+/-)
-- [x] Notification saat Target Tercapai
-- [x] Confetti Effect
-- [x] Progress Bar
-- [x] Stats Overview (Total, Streak, Completed)
-- [x] 12 Pilihan Zikir dengan Fadhilah
-- [x] Local Storage (Data Persistence)
-- [x] Dark Mode Toggle dengan Save
-- [x] Keyboard Support (Space, R)
-- [x] Vibration Feedback (Mobile)
-
-### ⏳ Challenge 3 - Coming Soon
-
-- [ ] _Features TBD_
-
-### ⏳ Challenge 4 - Coming Soon
-
-- [ ] _Features TBD_
-
----
-
-## 🌐 Live Demo
-
-| Challenge       | URL                                                                                         | Status  |
-| :-------------- | :------------------------------------------------------------------------------------------ | :-----: |
-| **Challenge 1** | [ramadhan-challenge-rks.vercel.app](https://ramadhan-challenge-rks.vercel.app/)             | ✅ Live |
-| **Challenge 2** | [ramadhan-challenge2-rks-v19f.vercel.app](https://ramadhan-challenge2-rks-v19f.vercel.app/) | ✅ Live |
-
----
-
-## 📸 Screenshots
-
-### Challenge 1
-
-- **Beranda:** Hero section dengan ilustrasi Ramadhan
-- **Doa:** Expandable cards dengan lafal Arab, latin, arti
-
-### Challenge 2
-
-- **Hitung Zikir:** Counter dengan progress bar dan stats
-- **Dark Mode:** Toggle mode gelap dengan save preference
-- **Notification:** Popup confetti saat target tercapai
-
----
+--
 
 ## 👤 Tentang Penulis
 
