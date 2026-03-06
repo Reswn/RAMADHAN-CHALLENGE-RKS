@@ -13,7 +13,9 @@
 
 ---
 
-<div align="center">
+> **Challenge 1 & 2 - Alhazen Academy Ramadhan Coding Challenge**
+
+### LIVE REVIEW PROJECT: https://ramadhan-challenge2-rks-v19f.vercel.app/zikir.html
 
 ![Ramadhan 2026](https://img.shields.io/badge/Ramadhan-1447H-emerald?style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -61,7 +63,7 @@ Proyek ini merupakan kelanjutan dari **Challenge 1** dan dibuat untuk memenuhi *
 
 ## 🚀 Fitur Lengkap
 
-### 🏠 Halaman Beranda (`index.html`)
+### Halaman Beranda (`index.html`)
 
 - **Hero Section:** Tampilan pembuka yang menarik dengan ilustrasi Ramadhan
 - **Info Tanggal:** Display tanggal Masehi & Hijriah
@@ -74,15 +76,29 @@ Proyek ini merupakan kelanjutan dari **Challenge 1** dan dibuat untuk memenuhi *
 
 Kumpulan doa lengkap dengan sistem **Expandable Card**:
 
-- **🌙 Section Sahur**
+- **Section Sahur**
   - Niat Puasa Ramadhan (Wajib)
   - Doa Sebelum Makan Sahur (Sunnah)
-- **🌅 Section Buka Puasa**
+- **Section Buka Puasa**
   - Doa Sebelum Berbuka (Sunnah)
   - Doa Setelah Berbuka (Sunnah)
-- **⭐ Section Malam Ramadhan**
+- **Section Malam Ramadhan**
   - Doa Lailatul Qadar (10 Malam Terakhir)
   - Doa Memohon Ampunan (Setiap Waktu)
+  -
+
+### 📿 Halaman Hitung Zikir (`zikir.html`) 🆕
+
+**Counter zikir interaktif dengan fitur lengkap:**
+
+- Counter Display: Angka besar dalam lingkaran gradient
+- Target Adjustment: Tombol +/- untuk ubah target
+- Progress Bar: Visual progress dengan warna dinamis
+- Notification: Popup "Target Tercapai!" dengan confetti
+- Stats Cards: Total Zikir, Streak Hari, Target Completed
+- 12 Zikir Options: Dengan lafal Arab, arti, dan fadhilah
+- Fadhilah Section: Keutamaan masing-masing zikir dengan dalil
+- Benefits Grid: 4 keutamaan umum berzikir
 
 ### 📿 Halaman Hitung Zikir (`hitung-zikir.html`) **🆕**
 
@@ -112,14 +128,14 @@ Counter zikir interaktif dengan fitur lengkap:
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
 ```bash
 ramadhan-space/
 │
 ├── index.html              # Halaman beranda utama
 ├── doa.html                # Halaman kumpulan doa interaktif
-├── hitung-zikir.html       # 🆕 Halaman counter zikir (Challenge 2)
+├── zikir.html         # 🆕 Halaman counter zikir (Challenge 2)
 │
 ├── css/
 │   └── style.css           # Combined stylesheet (Global + All Pages)
@@ -322,7 +338,7 @@ Proyek ini dibuat untuk tujuan pembelajaran dalam rangka **Alhazen Academy Ramad
 
 ---
 
-## 🙏 Ucapan Terima Kasih
+## Ucapan Terima Kasih
 
 Terima kasih kepada:
 
@@ -335,12 +351,12 @@ Terima kasih kepada:
 
 <div align="center">
 
-### 🌟 **Semoga Ramadhan Kita Diterima Allah SWT** 🌟
+### **Semoga Ramadhan Kita Diterima Allah SWT** 🌟
 
 **Marhaban Ya Ramadhan 1447 H**
 
 ---
 
-Made with ❤️ by **Reni Kartika Suwandi**
+by **Reni Kartika Suwandi**
 
 </div>
