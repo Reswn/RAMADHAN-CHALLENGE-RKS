@@ -8,14 +8,12 @@
 | :-------------- | :------------------------------- | :----------: | :-------------------------------------------------------------- |
 | **Challenge 1** | Portal Doa (Sahur, Buka, Malam)  | ✅ Completed | [Live Review](https://ramadhan-challenge-rks.vercel.app/)       |
 | **Challenge 2** | Hitung Zikir Interactive Counter | ✅ Completed | [Live Review](https://ramadhan-challenge2-rks-v19f.vercel.app/) |
-| **Challenge 3** | _Coming Soon_                    |  ⏳ Pending  | -                                                               |
+| **Challenge 3** | Kalkulator Zakat                 | ✅ Completed | [Live Review](https://ramadhan-challenge-rks-yi5o.vercel.app/) |
 | **Challenge 4** | _Coming Soon_                    |  ⏳ Pending  | -                                                               |
 
 ---
 
-> **Challenge 1 & 2 - Alhazen Academy Ramadhan Coding Challenge**
-
-### LIVE REVIEW PROJECT: https://ramadhan-challenge2-rks-v19f.vercel.app/zikir.html
+> **Challenge 1, 2 & 3- Alhazen Academy Ramadhan Coding Challenge**
 
 ![Ramadhan 2026](https://img.shields.io/badge/Ramadhan-1447H-emerald?style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -40,24 +38,24 @@ Proyek ini merupakan kelanjutan dari **Challenge 1** dan dibuat untuk memenuhi *
 
 ---
 
-## 🎯 Challenge 2 - Fitur Baru
+## 🎯 Challenge 3 - Fitur Baru
 
-### 📄 Halaman Hitung Zikir (`hitung-zikir.html`)
+### 📄 Halaman Kalkulator Zakat (`kalkulator-zakat.html`)
 
-| Fitur                 | Deskripsi                                         | Status |
-| :-------------------- | :------------------------------------------------ | :----: |
-| **Counter Zikir**     | Menampilkan jumlah dzikir saat ini dengan animasi |   ✅   |
-| **Tombol Tambah**     | Untuk menambah hitungan dzikir dengan efek scale  |   ✅   |
-| **Tombol Reset**      | Untuk mengulang hitungan dari nol                 |   ✅   |
-| **Target Dzikir**     | Menampilkan dan menyesuaikan target (33/100)      |   ✅   |
-| **Badge/Notifikasi**  | Muncul saat target tercapai dengan confetti       |   ✅   |
-| **Progress Bar**      | Visual progress menuju target                     |   ✅   |
-| **Dark Mode**         | Toggle mode gelap/terang dengan save preference   |   ✅   |
-| **Local Storage**     | Data tersimpan otomatis (count, streak, stats)    |   ✅   |
-| **Stats Overview**    | Total Zikir, Hari Berturut, Target Selesai        |   ✅   |
-| **12 Zikir Pilihan**  | Subhanallah, Alhamdulillah, dll dengan fadhilah   |   ✅   |
-| **Keyboard Support**  | Space untuk tambah, R untuk reset                 |   ✅   |
-| **Responsive Design** | Mobile, Tablet, Desktop friendly                  |   ✅   |
+| Fitur                      | Deskripsi                                                        | Status |
+| :------------------------- | :--------------------------------------------------------------- | :----: |
+| **5 Jenis Zakat**          | Penghasilan, Perusahaan Jasa, Dagang, Perdagangan, Emas          |   ✅   |
+| **Form Dinamis**           | Form input berubah sesuai jenis zakat yang dipilih               |   ✅   |
+| **Perhitungan Otomatis**   | Kalkulasi otomatis total harta dan zakat yang harus dibayar      |   ✅   |
+| **Nisab Display**          | Display nisab per tahun dan per bulan berdasarkan harga emas     |   ✅   |
+| **Harga Emas Update**      | Simulasi update harga emas real-time                             |   ✅   |
+| **Status Wajib/Tidak**     | Indikator status kewajiban zakat                                 |   ✅   |
+| **Print/PDF Export**       | Export hasil perhitungan ke PDF untuk dokumentasi                |   ✅   |
+| **Riwayat Perhitungan**    | Local storage untuk menyimpan riwayat perhitungan                |   ✅   |
+| **Lembaga Zakat**          | Direktori lembaga zakat resmi untuk penyaluran                   |   ✅   |
+| **Panduan Zakat**          | Panduan lengkap tentang nisab, kadar, dan waktu pembayaran       |   ✅   |
+| **Dark Mode**              | Toggle mode gelap/terang dengan save preference                  |   ✅   |
+| **Responsive Design**      | Mobile, Tablet, Desktop friendly                                 |   ✅   |
 
 ---
 
@@ -112,6 +110,41 @@ Counter zikir interaktif dengan fitur lengkap:
 - **12 Zikir Options:** Dengan lafal Arab, arti, dan fadhilah
 - **Fadhilah Section:** Keutamaan masing-masing zikir dengan dalil
 - **Benefits Grid:** 4 keutamaan umum berzikir
+
+---
+### 💰 Halaman Kalkulator Zakat (`kalkulator-zakat.html`) **🆕**
+
+**Kalkulator zakat interaktif dengan fitur lengkap:**
+
+- **5 Jenis Zakat:**
+  - Zakat Penghasilan (Penghasilan bulanan × 12)
+  - Zakat Perusahaan Jasa (Pendapatan - Biaya Operasional)
+  - Zakat Perusahaan Dagang (Aktiva Lancar - Pasiva Lancar)
+  - Zakat Perdagangan (Aset + Laba - Hutang Jatuh Tempo)
+  - Zakat Emas (Total emas ≥ 85 gram)
+- **Perhitungan Otomatis:**
+  - Kalkulasi total harta bersih
+  - Perhitungan zakat 2.5%
+  - Indikator status wajib/tidak wajib
+- **Nisab Display:**
+  - Nisab per tahun (Harga emas × 85 gram)
+  - Nisab per bulan (Nisab tahun ÷ 12)
+  - Update otomatis saat harga emas berubah
+- **Fitur Export:**
+  - Print/Export hasil perhitungan ke PDF
+  - Format siap cetak untuk dokumentasi
+- **Riwayat Perhitungan:**
+  - Local storage menyimpan 10 perhitungan terakhir
+  - Timestamp, jenis zakat, dan jumlah zakat
+  - Fitur hapus riwayat
+  - **Lembaga Zakat:**
+  - Direktori 5+ lembaga zakat resmi
+  - Link langsung ke website lembaga
+  - BAZNAS, Dompet Dhuafa, Lazismu, dll
+- **Panduan Zakat:**
+  - Panduan lengkap untuk setiap jenis zakat
+  - Informasi nisab, kadar, dan waktu pembayaran
+  - Referensi syariat yang jelas
 
 ---
 
