@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doa Ramadhan</title>
-
+    <title>Doa Ramadhan - Ramadhan Space 2026</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
     <!-- Fonts via Fontsource -->
     <link
       rel="stylesheet"
@@ -35,9 +35,10 @@
           <a href="index.html">Beranda</a>
           <a href="doa.html" class="active">Doa</a>
           <a href="zikir.html">Zikir</a>
+          <a href="kalkulator-zakat.html"> Kalkulator Zakat </a>
         </nav>
 
-        <a href="#" class="btn-nav">Mulai</a>
+        <!-- <a href="#" class="btn-nav">Mulai</a> -->
 
         <!-- Dark Mode Toggle -->
         <button
@@ -61,7 +62,7 @@
       </div>
     </header>
 
-    <!-- resposive SIDEBAR OVERLAY & NAVIGATION -->
+    <!-- resposive SIDEBAR OVERLAY NAD NAVIGATION -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <aside class="sidebar">
@@ -83,6 +84,10 @@
           <i class="bi bi-brightness-low"></i>
           Zikir
         </a>
+        <a href="kalkulator-zakat.html">
+          <i class="bi bi-calculator"></i>
+          Kalkulator Zakat
+        </a>
       </nav>
 
       <!-- Dark Mode Toggle Sidebar -->
@@ -93,9 +98,9 @@
         </button>
       </div>
 
-      <div class="sidebar-btn">
+      <!-- <div class="sidebar-btn">
         <a href="#" class="btn-nav" onclick="toggleSidebar()">Mulai</a>
-      </div>
+      </div> -->
     </aside>
 
     <!-- PAGE HEADER -->
@@ -389,6 +394,10 @@
             <a href="index.html"><i class="bi bi-house"></i> Beranda</a>
             <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
             <a href="zikir.html"><i class="bi bi-brightness-low"></i> Zikir</a>
+            <a href="kalkulator-zakat.html">
+              <i class="bi bi-calculator"></i>
+              Kalkulator Zakat
+            </a>
           </div>
 
           <div class="footer-links">
@@ -444,7 +453,7 @@
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
 
-        // Update icons
+        // Update icon
         const icons = document.querySelectorAll(
           "#darkModeIcon, #sidebarDarkModeIcon"
         );
@@ -457,8 +466,8 @@
             icon.classList.add("bi-moon-fill");
           }
         });
+        // save darkmode setting
 
-        // Save preference
         localStorage.setItem("darkMode", isDark);
       }
 
@@ -478,6 +487,7 @@
       }
 
       // SIDEBAR FUNCTIONAL
+
       function toggleSidebar() {
         const sidebar = document.querySelector(".sidebar");
         const overlay = document.querySelector(".sidebar-overlay");

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hitung Zikir - Ramadhan Space 2026</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
 
     <link
       rel="stylesheet"
@@ -31,10 +32,11 @@
         <nav class="nav-menu">
           <a href="index.html">Beranda</a>
           <a href="doa.html">Doa</a>
-          <a href="hitung-zikir.html" class="active">Zikir</a>
+          <a href="zikir.html" class="active">Zikir</a>
+          <a href="kalkulator-zakat.html"> Kalkulator Zakat </a>
         </nav>
 
-        <a href="#" class="btn-nav">Mulai</a>
+        <!-- <a href="#" class="btn-nav">Mulai</a> -->
 
         <button
           class="dark-mode-toggle"
@@ -56,7 +58,7 @@
       </div>
     </header>
 
-    <!-- Responsive SIDEBAR OVERLAY NAVIGATION (Mobile) -->
+    <!-- Responsive SIDEBAR NAVIGATION (Mobile) -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <aside class="sidebar">
@@ -74,9 +76,13 @@
           <i class="bi bi-book"></i>
           Doa
         </a>
-        <a href="hitung-zikir.html" class="active">
+        <a href="zikir.html" class="active">
           <i class="bi bi-brightness-low"></i>
           Zikir
+        </a>
+        <a href="kalkulator-zakat.html">
+          <i class="bi bi-calculator"></i>
+          Kalkulator Zakat
         </a>
       </nav>
 
@@ -87,9 +93,9 @@
         </button>
       </div>
 
-      <div class="sidebar-btn">
+      <!-- <div class="sidebar-btn">
         <a href="#" class="btn-nav" onclick="toggleSidebar()">Mulai</a>
-      </div>
+      </div> -->
     </aside>
 
     <!-- MAIN CONTENT -->
@@ -136,7 +142,7 @@
 
           <!-- Counter Container -->
           <div class="zikir-container">
-            <!-- Selected Zikir Display -->
+            <!-- Select Zikir Display -->
             <div class="selected-zikir-display">
               <div class="zikir-label">
                 <i class="bi bi-bookmark-heart-fill"></i>
@@ -148,7 +154,7 @@
               <div class="zikir-arabic" id="selectedZikirArabic"></div>
             </div>
 
-            <!-- Counter Display -->
+            <!-- counter display -->
             <div class="counter-display">
               <div class="counter-circle">
                 <span id="counter">0</span>
@@ -159,7 +165,7 @@
               </div>
             </div>
 
-            <!-- Target Display -->
+            <!-- target Display -->
             <div class="target-display">
               <div class="target-info">
                 <i class="bi bi-flag-fill"></i>
@@ -186,7 +192,7 @@
               </div>
             </div>
 
-            <!-- Control Buttons -->
+            <!-- control Button -->
             <div class="control-buttons">
               <button class="btn-reset" onclick="resetCounter()">
                 <i class="bi bi-arrow-counterclockwise"></i>
@@ -198,7 +204,7 @@
               </button>
             </div>
 
-            <!-- Progress Bar -->
+            <!-- progress Bar -->
             <div class="progress-container">
               <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -208,7 +214,7 @@
               </div>
             </div>
 
-            <!-- Notification Area -->
+            <!-- notification Area -->
             <div class="notification" id="notification">
               <i class="bi bi-check-circle-fill"></i>
               <span>Target Tercapai!</span>
@@ -247,7 +253,7 @@
             </div>
           </div>
 
-          <!-- Zikir Pilihan -->
+          <!-- zikir Pilihan -->
           <div class="zikir-suggestions">
             <h3><i class="bi bi-lightbulb"></i> Pilih Zikir untuk Dihitung</h3>
             <p class="suggestions-desc">
@@ -535,9 +541,11 @@
             <h4>Navigasi</h4>
             <a href="index.html"><i class="bi bi-house"></i> Beranda</a>
             <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
-            <a href="hitung-zikir.html"
-              ><i class="bi bi-brightness-low"></i> Zikir</a
-            >
+            <a href="zikir.html"><i class="bi bi-brightness-low"></i> Zikir</a>
+            <a href="kalkulator-zakat.html">
+              <i class="bi bi-calculator"></i>
+              Kalkulator Zakat
+            </a>
           </div>
 
           <div class="footer-links">
@@ -625,7 +633,7 @@
       const currentStreakEl = document.getElementById("currentStreak");
       const targetCompletedEl = document.getElementById("targetCompleted");
 
-      // Load data dari Local Storage
+      // Load data dari local Storage
       window.addEventListener("DOMContentLoaded", () => {
         loadFromLocalStorage();
         loadDarkMode();
@@ -633,7 +641,7 @@
         updateStatsDisplay();
       });
 
-      // Save to Local Storage- simpan ke lokal
+      // save to Local Storage
       function saveToLocalStorage() {
         const data = {
           count,
@@ -650,7 +658,7 @@
         localStorage.setItem("zikirData", JSON.stringify(data));
       }
 
-      // Akses dari local
+      // akses from local
       function loadFromLocalStorage() {
         const savedData = localStorage.getItem("zikirData");
         if (savedData) {
@@ -698,14 +706,14 @@
         }
       }
 
-      // Update statistik
+      // update statistik
       function updateStatsDisplay() {
         totalZikirEl.textContent = totalZikir.toLocaleString();
         currentStreakEl.textContent = currentStreak;
         targetCompletedEl.textContent = targetCompleted;
       }
 
-      // Set Zikir w/ (5 parameter)
+      // set Zikir w/ (5 parameter)
       function setZikir(name, arabic, translation, targetCount, fadhilah) {
         currentZikir = name;
         currentZikirArabic = arabic;
@@ -743,7 +751,7 @@
         }, 300);
       }
 
-      // Add Count
+      // add Count
       function addCount() {
         if (!currentZikir) {
           selectedZikirName.innerHTML = `<span class="placeholder-highlight">Pilih zikir dulu! 👆</span>`;
@@ -777,7 +785,7 @@
         saveToLocalStorage();
       }
 
-      // Reset Counter
+      // reset Counter
       function resetCounter() {
         count = 0;
         targetReached = false;
@@ -792,7 +800,7 @@
         saveToLocalStorage();
       }
 
-      // Change Target
+      // change Target
       function changeTarget(value) {
         target += value;
         if (target < 1) target = 1;
@@ -822,7 +830,7 @@
         }
       }
 
-      // Show Notif
+      // show Notif
       function showNotification() {
         notification.classList.add("show");
         createConfetti();

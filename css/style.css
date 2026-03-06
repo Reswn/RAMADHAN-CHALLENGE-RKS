@@ -20,7 +20,7 @@
   --radius-lg: 24px;
 }
 
-/*  DARK MODE VARIABEL */
+/* ==================== DARK MODE VARIABLES ==================== */
 body.dark-mode {
   --bg-color: #0f172a;
   --bg-gradient: linear-gradient(180deg, #020617 0%, #0f172a 100%);
@@ -37,7 +37,7 @@ body.dark-mode {
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
 }
 
-/*  RESET & BASE */
+/* ==================== RESET & BASE ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -58,7 +58,33 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/*  PAGE ZIKIR BACKGROUND*/
+/* ==================== GLOBAL SCROLLBAR ==================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Support untuk Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--bg-color);
+}
+
+/* ==================== PAGE ZIKIR BACKGROUND ==================== */
 body.page-zikir {
   background-color: var(--bg-color);
   background-image: radial-gradient(
@@ -235,20 +261,20 @@ body.dark-mode.page-doa::before {
   background: rgba(2, 6, 23, 0.97);
 }
 
+/* ==================== CONTAINER ==================== */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: min(1200px, 92%);
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
-/*  NAVBAR  */
+/* ==================== NAVBAR ==================== */
 .navbar {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
   background: var(--navbar-bg);
   padding: 16px 0;
   z-index: 1000;
@@ -303,7 +329,8 @@ body.dark-mode .navbar {
 }
 
 .nav-menu a {
-  padding: 10px 20px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
   text-decoration: none;
   color: var(--text-muted);
   font-weight: 500;
@@ -352,7 +379,7 @@ body.dark-mode .nav-menu a.active {
   box-shadow: var(--shadow-lg);
 }
 
-/*  DARK MODE TOGGLE  */
+/* ==================== DARK MODE TOGGLE ==================== */
 .dark-mode-toggle {
   display: flex;
   align-items: center;
@@ -366,7 +393,7 @@ body.dark-mode .nav-menu a.active {
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .dark-mode-toggle:hover {
@@ -387,7 +414,7 @@ body.dark-mode .dark-mode-toggle:hover {
   box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
 }
 
-/*  HAMBURGER MENU */
+/* ==================== HAMBURGER MENU ==================== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -395,7 +422,8 @@ body.dark-mode .dark-mode-toggle:hover {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 6px;
+  margin-left: 10px;
   z-index: 1001;
   transition: transform 0.3s ease;
 }
@@ -426,7 +454,7 @@ body.dark-mode .dark-mode-toggle:hover {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/*  SIDEBAR NAVIGATION */
+/* ==================== SIDEBAR NAVIGATION ==================== */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -453,11 +481,11 @@ body.dark-mode .sidebar-overlay {
   position: fixed;
   top: 0;
   right: -300px;
-  width: 300px;
+  width: min(300px, 80%);
   height: 100vh;
   background: var(--white);
   z-index: 999;
-  padding: 80px 30px 30px;
+  padding: 70px 25px 25px;
   box-shadow: var(--shadow-xl);
   transition: right 0.3s ease;
   overflow-y: auto;
@@ -475,7 +503,7 @@ body.dark-mode .sidebar {
 .sidebar-logo {
   position: absolute;
   top: 20px;
-  left: 30px;
+  left: 25px;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -558,11 +586,11 @@ body.dark-mode .sidebar-menu a.active {
   display: block;
 }
 
-/*  HERO SECTION */
+/* ==================== HERO SECTION ==================== */
 .hero {
   padding-top: 140px;
   padding-bottom: 80px;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   position: relative;
@@ -766,13 +794,13 @@ body.dark-mode .floating-card {
 
 .floating-card.card-1 {
   top: 20%;
-  left: -20px;
+  left: -10px;
   animation-delay: 0s;
 }
 
 .floating-card.card-2 {
   bottom: 20%;
-  right: -20px;
+  right: -10px;
   animation-delay: 1.5s;
 }
 
@@ -802,7 +830,7 @@ body.dark-mode .floating-card {
   color: var(--text-muted);
 }
 
-/*  DATE SECTION  */
+/* ==================== DATE SECTION ==================== */
 .date-section {
   padding: 60px 0;
   background: var(--white);
@@ -868,7 +896,7 @@ body.dark-mode .date-card {
   font-size: 1.5rem;
 }
 
-/* DOA SECTION*/
+/* ==================== QUICK DOA SECTION ==================== */
 .quick-doa-section {
   padding: 80px 0;
   background: var(--bg-color);
@@ -905,7 +933,7 @@ body.dark-mode .date-card {
 
 .doa-quick-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 
@@ -980,7 +1008,7 @@ body.dark-mode .doa-quick-card {
   gap: 12px;
 }
 
-/*  DOA PREVIEW SECTION  */
+/* ==================== DOA PREVIEW SECTION ==================== */
 .doa-preview-section {
   padding: 100px 0;
   background: linear-gradient(180deg, var(--white) 0%, var(--bg-color) 100%);
@@ -993,7 +1021,7 @@ body.dark-mode .doa-preview-section {
 
 .doa-preview-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 35px;
 }
 
@@ -1120,7 +1148,7 @@ body.dark-mode .doa-preview-footer {
   color: var(--primary-dark);
 }
 
-/*  FEATURES SECTION */
+/* ==================== FEATURES SECTION ==================== */
 .features {
   padding: 100px 0;
   background: var(--white);
@@ -1133,7 +1161,7 @@ body.dark-mode .features {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   max-width: 1000px;
   margin: 0 auto;
@@ -1257,7 +1285,7 @@ body.dark-mode .feature-card:hover {
   gap: 15px;
 }
 
-/* CTA SECTION  */
+/* ==================== CTA SECTION ==================== */
 .cta {
   padding: 100px 0;
   background: var(--primary-gradient);
@@ -1320,7 +1348,7 @@ body.dark-mode .feature-card:hover {
   transform: translateY(-3px);
 }
 
-/*  PAGE DOA HEADER */
+/* ==================== PAGE DOA HEADER ==================== */
 .page-header {
   text-align: center;
   padding: 120px 0 50px;
@@ -1353,7 +1381,7 @@ body.dark-mode .page-header h1 {
   display: block;
 }
 
-/*  DOA SECTION  */
+/* ==================== DOA SECTION ==================== */
 main {
   flex: 1;
   padding-bottom: 60px;
@@ -1396,14 +1424,14 @@ main {
   border-radius: 3px;
 }
 
-/*  DOA CARD Grid */
+/* ==================== DOA CARD GRID ==================== */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
 }
 
-/* DOA CARD  */
+/* ==================== DOA CARD ==================== */
 .doa-card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -1562,7 +1590,7 @@ body.dark-mode .card-summary {
   }
 }
 
-/* Arab Text */
+/* Arabic Text */
 .arabic {
   font-family: "Amiri", serif;
   font-size: 2rem;
@@ -1593,7 +1621,7 @@ body.dark-mode .card-summary {
   line-height: 1.8;
 }
 
-/* Transletion */
+/* Translation */
 .arti {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -1619,7 +1647,7 @@ body.dark-mode .arti {
   letter-spacing: 1px;
 }
 
-/* ZIKIR PAGE STYLES  */
+/* ==================== ZIKIR PAGE STYLES ==================== */
 .zikir-section {
   padding: 120px 0 60px;
   min-height: 100vh;
@@ -1652,7 +1680,7 @@ body.dark-mode .zikir-header h1 {
 /* Stats Overview */
 .stats-overview {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   max-width: 900px;
   margin: 0 auto 50px;
@@ -2216,7 +2244,7 @@ body.dark-mode .suggestions-desc {
 
 .suggestion-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -2423,7 +2451,7 @@ body.dark-mode .fadhilah-section h3 {
   border-bottom-color: rgba(16, 185, 129, 0.3);
 }
 
-/* Zikir Lafal Container (NEW) */
+/* Zikir Lafal Container */
 .zikir-lafal-container {
   background: linear-gradient(
     135deg,
@@ -2554,7 +2582,7 @@ body.dark-mode .fadhilah-text {
   border-top: 1px dashed rgba(217, 119, 6, 0.3);
 }
 
-/* ZIKIR BENEFIT  */
+/* ZIKIR BENEFITS */
 .zikir-benefits {
   max-width: 900px;
   margin: 0 auto 50px;
@@ -2581,8 +2609,9 @@ body.dark-mode .zikir-benefits {
 }
 
 .benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -2641,7 +2670,7 @@ body.dark-mode .benefit-card p {
   font-style: italic;
 }
 
-/* KEMBAI- BACK TO HOME BUTTON  */
+/*  BACK TO HOME BUTTON */
 .back-home {
   text-align: center;
   margin-top: 60px;
@@ -2693,7 +2722,7 @@ body.dark-mode .footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
   margin-bottom: 60px;
 }
@@ -2778,7 +2807,7 @@ body.dark-mode .footer {
   transform: translateY(-3px);
 }
 
-/*  RESPONSIVE */
+/* RESPONSIVE*/
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -2839,6 +2868,20 @@ body.dark-mode .footer {
 
   .hamburger {
     display: flex;
+  }
+
+  .navbar {
+    padding: 12px 0;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .dark-mode-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
   }
 
   .hero {
@@ -2980,40 +3023,6 @@ body.dark-mode .footer {
     font-size: 1.2rem;
   }
 }
-@media (max-width: 768px) {
-  .fadhilah-section {
-    padding: 30px 20px;
-  }
-
-  .zikir-lafal-container {
-    padding: 25px 20px;
-  }
-
-  .zikir-lafal-arabic {
-    font-size: 1.8rem;
-    padding: 20px;
-  }
-
-  .fadhilah-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .fadhilah-icon {
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .zikir-lafal-arabic {
-    font-size: 1.5rem;
-  }
-
-  .fadhilah-section h3 {
-    font-size: 1.3rem;
-  }
-}
 
 @media (max-width: 480px) {
   .hero h1 {
@@ -3058,7 +3067,8 @@ body.dark-mode .footer {
   }
 
   .arabic {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    line-height: 2.1;
   }
 
   .btn-back {
@@ -3077,7 +3087,7 @@ body.dark-mode .footer {
   }
 
   .sidebar {
-    width: 280px;
+    width: min(300px, 80%);
     padding: 70px 20px 30px;
   }
 
@@ -3138,22 +3148,1110 @@ body.dark-mode .footer {
     flex-direction: column;
     text-align: center;
   }
+
+  .fadhilah-section {
+    padding: 30px 20px;
+  }
+
+  .zikir-lafal-container {
+    padding: 25px 20px;
+  }
+
+  .zikir-lafal-arabic {
+    font-size: 1.5rem;
+    padding: 20px;
+  }
+
+  .fadhilah-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fadhilah-icon {
+    margin: 0 auto;
+  }
 }
 
-/* DARK MODE SCROLLBAR  */
-body.dark-mode::-webkit-scrollbar {
-  width: 10px;
+/* ZAKAT SECTION */
+
+/* Page Background */
+.page-zakat {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(20, 184, 166, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(217, 119, 6, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(20, 184, 166, 0.03) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(15, 118, 110, 0.02) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(15, 118, 110, 0.02) 75%,
+      rgba(15, 118, 110, 0.02)
+    ),
+    linear-gradient(
+      45deg,
+      rgba(15, 118, 110, 0.02) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(15, 118, 110, 0.02) 75%,
+      rgba(15, 118, 110, 0.02)
+    );
+  background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 30px 30px;
+  background-attachment: fixed;
 }
 
-body.dark-mode::-webkit-scrollbar-track {
+body.dark-mode .page-zakat {
+  background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(245, 158, 11, 0.05) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(16, 185, 129, 0.04) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(16, 185, 129, 0.04) 75%,
+      rgba(16, 185, 129, 0.04)
+    ),
+    linear-gradient(
+      45deg,
+      rgba(16, 185, 129, 0.04) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(16, 185, 129, 0.04) 75%,
+      rgba(16, 185, 129, 0.04)
+    );
+}
+
+body.dark-mode .page-zakat::before {
+  background: rgba(2, 6, 23, 0.97);
+}
+
+/* Zakat Section */
+.zakat-section {
+  padding: 120px 0 60px;
+  min-height: 100vh;
+}
+
+/* Page Header */
+.zakat-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.zakat-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.zakat-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* Zakat Calculator Card */
+.zakat-calculator {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-xl);
+  border: 2px solid rgba(16, 185, 129, 0.15);
+}
+
+body.dark-mode .zakat-calculator {
+  background: var(--card-bg);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.form-group label i {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group input[readonly] {
+  background: rgba(16, 185, 129, 0.05);
+  cursor: not-allowed;
+}
+
+.form-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Input with prefix (Rp.) */
+.input-with-prefix {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-prefix {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 35px;
+}
+
+.input-with-prefix input {
+  flex: 1;
+}
+
+/* Form Row */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* gold Price Section */
+.gold-price-section {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.08) 0%,
+    rgba(217, 119, 6, 0.08) 100%
+  );
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 2px solid rgba(245, 158, 11, 0.2);
+}
+
+body.dark-mode .gold-price-section {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.12) 0%,
+    rgba(217, 119, 6, 0.12) 100%
+  );
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.gold-price-update {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* nisab Display */
+.nisab-display {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.nisab-card {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.08) 0%,
+    rgba(5, 150, 105, 0.08) 100%
+  );
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .nisab-card {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.15) 0%,
+    rgba(5, 150, 105, 0.15) 100%
+  );
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.nisab-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.nisab-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.nisab-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.nisab-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.nisab-info small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Button Group */
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* Calculate Button */
+.btn-calculate,
+.btn-print,
+.btn-reset {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-calculate {
+  background: var(--primary-gradient);
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-calculate:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-print {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-print:hover {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-reset {
+  background: #fbbf24;
+  color: #1f2937;
+  border: none;
+}
+
+.btn-reset:hover {
+  background: #f59e0b;
+  transform: translateY(-2px);
+}
+
+/* Results Section */
+.results-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px dashed rgba(16, 185, 129, 0.2);
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.results-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.results-header i {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.results-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.result-card {
+  background: var(--bg-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-3px);
+}
+
+.result-card.highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.1) 0%,
+    rgba(5, 150, 105, 0.1) 100%
+  );
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.result-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.result-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.result-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.result-value.status.wajib {
+  color: #10b981;
+}
+
+.result-value.status.tidak-wajib {
+  color: #f59e0b;
+}
+
+.result-value.zakat {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+/* Zakat Info Box */
+.zakat-info {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.08) 0%,
+    rgba(5, 150, 105, 0.08) 100%
+  );
+  border-radius: var(--radius);
+  padding: 25px;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  border: 2px solid rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .zakat-info {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.15) 0%,
+    rgba(5, 150, 105, 0.15) 100%
+  );
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.info-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.info-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/*  HISTORY SECTION  */
+.history-section {
+  max-width: 800px;
+  margin: 50px auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid rgba(16, 185, 129, 0.1);
+}
+
+body.dark-mode .history-section {
+  background: var(--card-bg);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.history-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .history-item {
+  border-bottom-color: rgba(16, 185, 129, 0.2);
+}
+
+.history-item:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: var(--radius);
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-type {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.history-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.history-amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.history-empty {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+}
+
+.btn-clear-history {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-clear-history:hover {
+  background: #dc2626;
+}
+
+/* ZAKAT INSTITUTION */
+.institutions-section {
+  max-width: 1000px;
+  margin: 50px auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid rgba(16, 185, 129, 0.1);
+}
+
+body.dark-mode .institutions-section {
+  background: var(--card-bg);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.institutions-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.institutions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.institution-card {
+  width: 260px;
+  background: var(--bg-color);
+  border-radius: var(--radius);
+  padding: 25px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .institution-card {
   background: #0f172a;
 }
 
-body.dark-mode::-webkit-scrollbar-thumb {
-  background: #10b981;
-  border-radius: 5px;
+.institution-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
-body.dark-mode::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+.institution-logo {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.institution-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.institution-link {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.institution-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Zakat Guidelines */
+.zakat-guidelines {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px 35px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid rgba(16, 185, 129, 0.1);
+}
+
+body.dark-mode .zakat-guidelines {
+  background: var(--card-bg);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.zakat-guidelines h3 {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.guidelines-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.guideline-card {
+  width: 260px;
+  background: var(--bg-color);
+  border-radius: var(--radius);
+  padding: 25px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .guideline-card {
+  background: #0f172a;
+}
+
+.guideline-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.guideline-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.guideline-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+
+.guideline-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.guideline-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guideline-card ul li {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(16, 185, 129, 0.2);
+}
+
+.guideline-card ul li:last-child {
+  border-bottom: none;
+}
+
+.guideline-card ul li strong {
+  color: var(--primary-color);
+}
+
+/* Back Button */
+.back-home {
+  text-align: center;
+  margin-top: 60px;
+  padding-bottom: 40px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-back:hover {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: translateX(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-back i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-back:hover i {
+  transform: translateX(-5px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .guidelines-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .institutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .btn-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .zakat-section {
+    padding: 100px 0 40px;
+  }
+
+  .zakat-header h1 {
+    font-size: 2rem;
+  }
+
+  .zakat-calculator {
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .nisab-display {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .institutions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zakat-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-icon {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .zakat-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .zakat-calculator {
+    padding: 25px 15px;
+  }
+
+  .btn-calculate,
+  .btn-print,
+  .btn-reset {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  .result-value {
+    font-size: 1.1rem;
+  }
+
+  .result-value.zakat {
+    font-size: 1.3rem;
+  }
+
+  .btn-back {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/*  PRINT STYLES  */
+@media print {
+  .navbar,
+  .sidebar,
+  .sidebar-overlay,
+  .back-home,
+  .btn-reset,
+  .btn-print,
+  .btn-calculate,
+  .history-section,
+  .institutions-section,
+  .zakat-guidelines,
+  .footer,
+  .dark-mode-toggle,
+  .hamburger,
+  .btn-nav,
+  .nav-menu {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .page-zakat::before {
+    display: none;
+  }
+
+  .page-zakat {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  .zakat-calculator {
+    box-shadow: none !important;
+    border: 2px solid #000 !important;
+    padding: 30px !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .form-group label {
+    color: #000 !important;
+    font-weight: bold;
+  }
+
+  .form-group input,
+  .form-group select {
+    border: 1px solid #000 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .input-prefix {
+    color: #000 !important;
+  }
+
+  .form-hint {
+    color: #666 !important;
+  }
+
+  .nisab-display {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  .nisab-card {
+    border: 1px solid #000 !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .nisab-label,
+  .nisab-value,
+  .nisab-info small {
+    color: #000 !important;
+  }
+
+  .results-section {
+    display: block !important;
+    border-top: 2px solid #000 !important;
+    padding-top: 30px !important;
+    margin-top: 30px !important;
+  }
+
+  .results-header {
+    color: #000 !important;
+  }
+
+  .results-header h3 {
+    color: #000 !important;
+  }
+
+  .results-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  .result-card {
+    border: 1px solid #000 !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .result-card.highlight {
+    background: #f0f0f0 !important;
+    border: 2px solid #000 !important;
+  }
+
+  .result-label,
+  .result-value {
+    color: #000 !important;
+  }
+
+  .zakat-info {
+    border: 1px solid #000 !important;
+    background: #f9f9f9 !important;
+    box-shadow: none !important;
+  }
+
+  .info-content h4,
+  .info-content p {
+    color: #000 !important;
+  }
+
+  .zakat-calculator,
+  .results-section {
+    page-break-inside: avoid;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Zakat - Ramadhan Space 2026</title>
+
+    <!-- Fonts via Fontsource -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.13/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/amiri@5.0.2/index.css"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page-zakat">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="Ramadhan Space Logo" />
+          Ramadhan Space
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html">Beranda</a>
+          <a href="doa.html">Doa</a>
+          <a href="zikir.html">Zikir</a>
+          <a href="kalkulator-zakat.html" class="active">Kalkulator Zakat</a>
+        </nav>
+
+        <button
+          class="dark-mode-toggle"
+          onclick="toggleDarkMode()"
+          title="Mode Gelap"
+        >
+          <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+        </button>
+
+        <button
+          class="hamburger"
+          onclick="toggleSidebar()"
+          aria-label="Toggle Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- SIDEBAR OVERLAY NAD NAVIGATION ON MOBILE -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="bi bi-moon-stars-fill"></i>
+        Ramadhan Space
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="index.html">
+          <i class="bi bi-house"></i>
+          Beranda
+        </a>
+        <a href="doa.html">
+          <i class="bi bi-book"></i>
+          Doa
+        </a>
+        <a href="zikir.html">
+          <i class="bi bi-brightness-low"></i>
+          Zikir
+        </a>
+        <a href="kalkulator-zakat.html" class="active">
+          <i class="bi bi-calculator"></i>
+          Kalkulator Zakat
+        </a>
+      </nav>
+
+      <div class="sidebar-dark-mode">
+        <button class="btn-dark-mode-sidebar" onclick="toggleDarkMode()">
+          <i class="bi bi-moon-fill" id="sidebarDarkModeIcon"></i>
+          <span>Mode Gelap</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="zakat-section">
+        <div class="container">
+          <!-- Page Header -->
+          <div class="zakat-header">
+            <span class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</span>
+            <h1>Kalkulator Zakat</h1>
+            <p>Hitung zakat Anda secara otomatis berdasarkan jenis zakat</p>
+          </div>
+
+          <!-- zakat Calculator Card -->
+          <div class="zakat-calculator">
+            <!-- Zakat type Selection -->
+            <div class="form-group">
+              <label for="zakatType">
+                <i class="bi bi-list-check"></i>
+                Jenis Zakat
+              </label>
+              <select id="zakatType" onchange="toggleForm()">
+                <option value="">Pilih Jenis Zakat</option>
+                <option value="penghasilan">Zakat Penghasilan</option>
+                <option value="perusahaan_jasa">Zakat Perusahaan (Jasa)</option>
+                <option value="perusahaan_dagang">
+                  Zakat Perusahaan (Dagang/Industri)
+                </option>
+                <option value="perdagangan">Zakat Perdagangan</option>
+                <option value="emas">Zakat Emas</option>
+              </select>
+            </div>
+
+            <!-- Form Zakat Penghasilan -->
+            <div
+              id="formPenghasilan"
+              class="dynamic-form"
+              style="display: none"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="gaji">
+                    <i class="bi bi-cash"></i>
+                    Gaji saya per bulan
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="gaji"
+                      placeholder="0"
+                      oninput="calculateTotalPenghasilan()"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="penghasilanLain">
+                    <i class="bi bi-wallet2"></i>
+                    Penghasilan lain-lain per bulan
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="penghasilanLain"
+                      placeholder="0"
+                      oninput="calculateTotalPenghasilan()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="totalPenghasilan">
+                  <i class="bi bi-graph-up"></i>
+                  Jumlah penghasilan per bulan
+                </label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">Rp.</span>
+                  <input
+                    type="number"
+                    id="totalPenghasilan"
+                    placeholder="0"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="penghasilanTahunan">
+                  <i class="bi bi-calendar3"></i>
+                  Penghasilan per tahun (untuk perhitungan nisab)
+                </label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">Rp.</span>
+                  <input
+                    type="number"
+                    id="penghasilanTahunan"
+                    placeholder="0"
+                    readonly
+                  />
+                </div>
+                <small class="form-hint"
+                  >Penghasilan bulanan × 12 bulan, dibandingkan dengan nisab
+                  tahunan</small
+                >
+              </div>
+            </div>
+
+            <!-- Zakat Perusahaan Jasa -->
+            <div
+              id="formPerusahaanJasa"
+              class="dynamic-form"
+              style="display: none"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pendapatanKotor">
+                    <i class="bi bi-building"></i>
+                    Pendapatan Kotor
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="pendapatanKotor"
+                      placeholder="Contoh: 50000000"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="biayaOperasional">
+                    <i class="bi bi-graph-down"></i>
+                    Biaya Operasional
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="biayaOperasional"
+                      placeholder="Contoh: 30000000"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="labaBersih">
+                  <i class="bi bi-calculator"></i>
+                  Laba Bersih (Pendapatan - Biaya)
+                </label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">Rp.</span>
+                  <input
+                    type="number"
+                    id="labaBersih"
+                    placeholder="0"
+                    readonly
+                  />
+                </div>
+                <small class="form-hint"
+                  >Zakat dihitung dari laba bersih perusahaan</small
+                >
+              </div>
+            </div>
+
+            <!-- Zakat Perusahaan Dagang/Industri -->
+            <div
+              id="formPerusahaanDagang"
+              class="dynamic-form"
+              style="display: none"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="aktivaLancar">
+                    <i class="bi bi-shop"></i>
+                    Aktiva Lancar
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="aktivaLancar"
+                      placeholder="Contoh: 150000000"
+                      oninput="calculateJumlahPerusahaan()"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="pasivaLancar">
+                    <i class="bi bi-graph-down"></i>
+                    Pasiva Lancar (Hutang Jatuh Tempo)
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="pasivaLancar"
+                      placeholder="Contoh: 40000000"
+                      oninput="calculateJumlahPerusahaan()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="jumlahPerusahaan">
+                  <i class="bi bi-calculator"></i>
+                  Jumlah (Aktiva - Pasiva)
+                </label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">Rp.</span>
+                  <input
+                    type="number"
+                    id="jumlahPerusahaan"
+                    placeholder="0"
+                    readonly
+                  />
+                </div>
+                <small class="form-hint"
+                  >Zakat dihitung dari aset bersih perusahaan</small
+                >
+              </div>
+            </div>
+
+            <!-- Zakat Perdagangan -->
+            <div
+              id="formPerdagangan"
+              class="dynamic-form"
+              style="display: none"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="asetLancar">
+                    <i class="bi bi-bag"></i>
+                    Aset Lancar (Modal + Stok)
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="asetLancar"
+                      placeholder="Contoh: 100000000"
+                      oninput="calculateJumlahPerdagangan()"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="laba">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Laba/Keuntungan
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="laba"
+                      placeholder="Contoh: 20000000"
+                      oninput="calculateJumlahPerdagangan()"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="hutangJatuhTempo">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    Hutang Jatuh Tempo
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="hutangJatuhTempo"
+                      placeholder="Contoh: 10000000"
+                      oninput="calculateJumlahPerdagangan()"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="jumlahPerdagangan">
+                    <i class="bi bi-calculator"></i>
+                    Jumlah (Aset + Laba - Hutang)
+                  </label>
+                  <div class="input-with-prefix">
+                    <span class="input-prefix">Rp.</span>
+                    <input
+                      type="number"
+                      id="jumlahPerdagangan"
+                      placeholder="0"
+                      readonly
+                    />
+                  </div>
+                </div>
+              </div>
+              <small class="form-hint"
+                >Zakat perdagangan = (Aset + Laba - Hutang Jatuh Tempo)</small
+              >
+            </div>
+
+            <!-- Zakat Emas -->
+            <div id="formEmas" class="dynamic-form" style="display: none">
+              <div class="form-group">
+                <label for="totalEmas">
+                  <i class="bi bi-circle-fill"></i>
+                  Total Emas yang dimiliki (gram)
+                </label>
+                <input
+                  type="number"
+                  id="totalEmas"
+                  placeholder="Contoh: 100"
+                  step="0.01"
+                />
+                <small class="form-hint"
+                  >Nisab emas = 85 gram. Zakat wajib jika emas ≥ 85 gram</small
+                >
+              </div>
+            </div>
+
+            <!-- gold Price Section -->
+            <div class="form-group gold-price-section">
+              <label for="hargaEmas">
+                <i class="bi bi-graph-up"></i>
+                Simulasi Perubahan Harga Emas per Gram (Rp)
+              </label>
+              <div class="input-with-prefix">
+                <span class="input-prefix">Rp.</span>
+                <input
+                  type="number"
+                  id="hargaEmas"
+                  placeholder="Contoh: 1078608"
+                  oninput="calculateNisab()"
+                />
+              </div>
+              <div class="gold-price-update">
+                <span id="goldPriceDate"
+                  >Harga emas terakhir diperbarui: -</span
+                >
+                <button
+                  type="button"
+                  class="btn-print"
+                  onclick="fetchGoldPrice()"
+                  style="padding: 6px 12px; font-size: 0.75rem"
+                >
+                  <i class="bi bi-arrow-clockwise"></i> Update
+                </button>
+              </div>
+              <small class="form-hint"
+                >Harga emas digunakan untuk menghitung nisab (85 gram)</small
+              >
+            </div>
+
+            <!-- nisab Display -->
+            <div class="nisab-display">
+              <div class="nisab-card">
+                <div class="nisab-icon">
+                  <i class="bi bi-bar-chart"></i>
+                </div>
+                <div class="nisab-info">
+                  <span class="nisab-label">Nisab per tahun</span>
+                  <span class="nisab-value" id="nisabTahun">Rp 0</span>
+                  <small>Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                </div>
+              </div>
+
+              <div class="nisab-card">
+                <div class="nisab-icon">
+                  <i class="bi bi-calendar3"></i>
+                </div>
+                <div class="nisab-info">
+                  <span class="nisab-label">Nisab per bulan</span>
+                  <span class="nisab-value" id="nisabBulan">Rp 0</span>
+                  <small>Sesuai SK Ketua BAZNAS No. 15 tahun 2026</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Button Group -->
+            <div class="button-group">
+              <button class="btn-reset" onclick="resetForm()">
+                <i class="bi bi-arrow-counterclockwise"></i>
+                Reset
+              </button>
+              <button class="btn-print" onclick="printResult()">
+                <i class="bi bi-printer"></i>
+                Print/PDF
+              </button>
+              <button class="btn-calculate" onclick="calculateZakat()">
+                <i class="bi bi-calculator"></i>
+                Hitung Zakat
+              </button>
+            </div>
+
+            <!-- result section -->
+            <div
+              class="results-section"
+              id="resultsSection"
+              style="display: none"
+            >
+              <div class="results-header">
+                <i class="bi bi-receipt"></i>
+                <h3>Hasil Perhitungan</h3>
+              </div>
+
+              <div class="results-grid">
+                <div class="result-card">
+                  <div class="result-icon">
+                    <i class="bi bi-piggy-bank"></i>
+                  </div>
+                  <div class="result-info">
+                    <span class="result-label">Total Harta/Penghasilan</span>
+                    <span class="result-value" id="totalHarta">Rp 0</span>
+                  </div>
+                </div>
+
+                <div class="result-card">
+                  <div class="result-icon">
+                    <i class="bi bi-bar-chart"></i>
+                  </div>
+                  <div class="result-info">
+                    <span class="result-label">Nilai Nisab</span>
+                    <span class="result-value" id="nilaiNisab">Rp 0</span>
+                  </div>
+                </div>
+
+                <div class="result-card">
+                  <div class="result-icon">
+                    <i class="bi bi-shield-check"></i>
+                  </div>
+                  <div class="result-info">
+                    <span class="result-label">Status</span>
+                    <span class="result-value status" id="statusZakat">-</span>
+                  </div>
+                </div>
+
+                <div class="result-card highlight">
+                  <div class="result-icon">
+                    <i class="bi bi-gift"></i>
+                  </div>
+                  <div class="result-info">
+                    <span class="result-label">Zakat yang Harus Dibayar</span>
+                    <span class="result-value zakat" id="jumlahZakat"
+                      >Rp 0</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- zakat Info Box -->
+              <div class="zakat-info">
+                <div class="info-icon">
+                  <i class="bi bi-info-circle"></i>
+                </div>
+                <div class="info-content">
+                  <h4>Informasi Zakat</h4>
+                  <p>
+                    <strong>Nisab:</strong> 85 gram emas × Harga emas per
+                    gram<br />
+                    <strong>Kadar Zakat:</strong> 2.5% dari total
+                    harta/penghasilan<br />
+                    <strong>Status Wajib:</strong> Jika total harta ≥ nisab
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- history Section -->
+          <div class="history-section">
+            <h3>
+              <i class="bi bi-clock-history"></i>
+              Riwayat Perhitungan
+            </h3>
+            <ul class="history-list" id="historyList">
+              <li class="history-empty">Belum ada riwayat perhitungan</li>
+            </ul>
+            <button
+              class="btn-clear-history"
+              onclick="clearHistory()"
+              style="display: none"
+              id="btnClearHistory"
+            >
+              <i class="bi bi-trash"></i> Hapus Riwayat
+            </button>
+          </div>
+
+          <!-- zakat institutions section -->
+          <div class="institutions-section">
+            <h3>
+              <i class="bi bi-building"></i>
+              Lembaga Zakat Resmi
+            </h3>
+            <div class="institutions-grid">
+              <div class="institution-card">
+                <div class="institution-logo">
+                  <i class="bi bi-building"></i>
+                </div>
+                <h4 class="institution-name">BAZNAS</h4>
+                <a
+                  href="https://baznas.go.id"
+                  target="_blank"
+                  class="institution-link"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Website
+                </a>
+              </div>
+
+              <div class="institution-card">
+                <div class="institution-logo">
+                  <i class="bi bi-heart"></i>
+                </div>
+                <h4 class="institution-name">Dompet Dhuafa</h4>
+                <a
+                  href="https://dompetdhuafa.org"
+                  target="_blank"
+                  class="institution-link"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Website
+                </a>
+              </div>
+
+              <div class="institution-card">
+                <div class="institution-logo">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                </div>
+                <h4 class="institution-name">Lazismu</h4>
+                <a
+                  href="https://lazismu.org"
+                  target="_blank"
+                  class="institution-link"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Website
+                </a>
+              </div>
+
+              <div class="institution-card">
+                <div class="institution-logo">
+                  <i class="bi bi-people"></i>
+                </div>
+                <h4 class="institution-name">Rumah Zakat</h4>
+                <a
+                  href="https://rumahzakat.org"
+                  target="_blank"
+                  class="institution-link"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Website
+                </a>
+              </div>
+
+              <div class="institution-card">
+                <div class="institution-logo">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h4 class="institution-name">NU Care LAZISNU</h4>
+                <a
+                  href="https://www.nucare.id/d"
+                  target="_blank"
+                  class="institution-link"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Website
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zakat guideline -->
+          <div class="zakat-guidelines">
+            <h3><i class="bi bi-journal-bookmark"></i> Panduan Zakat</h3>
+            <div class="guidelines-grid">
+              <div class="guideline-card">
+                <div class="guideline-icon">
+                  <i class="bi bi-cash-coin"></i>
+                </div>
+                <h4>Zakat Penghasilan</h4>
+                <p>
+                  Zakat yang dikeluarkan dari penghasilan rutin bulanan. Wajib
+                  dikeluarkan jika telah mencapai nisab.
+                </p>
+                <ul>
+                  <li><strong>Nisab:</strong> 85 gram emas</li>
+                  <li><strong>Kadar:</strong> 2.5%</li>
+                  <li><strong>Waktu:</strong> Setiap bulan/tahun</li>
+                </ul>
+              </div>
+
+              <div class="guideline-card">
+                <div class="guideline-icon">
+                  <i class="bi bi-building"></i>
+                </div>
+                <h4>Zakat Perusahaan Jasa</h4>
+                <p>Zakat yang dikeluarkan dari laba bersih perusahaan jasa.</p>
+                <ul>
+                  <li><strong>Nisab:</strong> 85 gram emas</li>
+                  <li><strong>Kadar:</strong> 2.5%</li>
+                  <li><strong>Rumus:</strong> (Pendapatan - Biaya) × 2.5%</li>
+                </ul>
+              </div>
+
+              <div class="guideline-card">
+                <div class="guideline-icon">
+                  <i class="bi bi-shop"></i>
+                </div>
+                <h4>Zakat Perusahaan Dagang</h4>
+                <p>
+                  Zakat yang dikeluarkan dari selisih aktiva dan pasiva lancar.
+                </p>
+                <ul>
+                  <li><strong>Nisab:</strong> 85 gram emas</li>
+                  <li><strong>Kadar:</strong> 2.5%</li>
+                  <li><strong>Rumus:</strong> (Aktiva - Pasiva) × 2.5%</li>
+                </ul>
+              </div>
+
+              <div class="guideline-card">
+                <div class="guideline-icon">
+                  <i class="bi bi-bag"></i>
+                </div>
+                <h4>Zakat Perdagangan</h4>
+                <p>
+                  Zakat yang dikeluarkan dari aset perdagangan setelah dikurangi
+                  hutang.
+                </p>
+                <ul>
+                  <li><strong>Nisab:</strong> 85 gram emas</li>
+                  <li><strong>Kadar:</strong> 2.5%</li>
+                  <li><strong>Rumus:</strong> (Aset + Laba - Hutang) × 2.5%</li>
+                </ul>
+              </div>
+
+              <div class="guideline-card">
+                <div class="guideline-icon">
+                  <i class="bi bi-circle"></i>
+                </div>
+                <h4>Zakat Emas</h4>
+                <p>
+                  Zakat yang dikeluarkan dari kepemilikan emas yang telah
+                  mencapai haul (satu tahun) dan nisab.
+                </p>
+                <ul>
+                  <li><strong>Nisab:</strong> 85 gram emas</li>
+                  <li><strong>Kadar:</strong> 2.5%</li>
+                  <li><strong>Waktu:</strong> Setelah 1 tahun</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Button -->
+          <div class="back-home">
+            <a href="index.html" class="btn-back">
+              <i class="bi bi-arrow-left"></i>
+              Kembali ke Beranda
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h4><i class="bi bi-moon-stars-fill"></i> Ramadhan Space</h4>
+            <p>
+              Portal ibadah modern untuk membantu kamu menjalani Ramadhan 2026
+              dengan lebih khusyuk dan terorganisir.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Navigasi</h4>
+            <a href="index.html"><i class="bi bi-house"></i> Beranda</a>
+            <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
+            <a href="zikir.html"><i class="bi bi-brightness-low"></i> Zikir</a>
+            <a href="kalkulator-zakat.html"
+              ><i class="bi bi-calculator"></i> Zakat</a
+            >
+          </div>
+
+          <div class="footer-links">
+            <h4>Ikuti Kami</h4>
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-instagram"></i> Instagram</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-twitter-x"></i> Twitter</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-facebook"></i> Facebook</a
+            >
+            <a href="https://www.instagram.com/xyzhunnn_/"
+              ><i class="bi bi-youtube"></i> YouTube</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="copyright">
+            RENI KARTIKA SUWANDI || © 2026 Ramadhan Space. All rights reserved.
+          </p>
+
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/xyzhunnn_/"
+              aria-label="Instagram"
+            >
+              <i class="bi bi-instagram icon-social"></i>
+            </a>
+            <a href="https://www.instagram.com/xyzhunnn_/" aria-label="Twitter">
+              <i class="bi bi-twitter-x icon-social"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/xyzhunnn_/"
+              aria-label="Facebook"
+            >
+              <i class="bi bi-facebook icon-social"></i>
+            </a>
+            <a href="https://www.instagram.com/xyzhunnn_/" aria-label="YouTube">
+              <i class="bi bi-youtube icon-social"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // ZAKAT CALCULATOR
+      const ZAKAT_PERCENTAGE = 0.025; // 2.5%
+      const NISAB_GRAM = 85; // 85 gram emas
+      const DEFAULT_HARGA_EMAS = 1078608; // Default gold price (BAZNAS 2026)
+
+      // toggle form based on zakat type
+      function toggleForm() {
+        const zakatType = document.getElementById("zakatType").value;
+        const formPenghasilan = document.getElementById("formPenghasilan");
+        const formPerusahaanJasa =
+          document.getElementById("formPerusahaanJasa");
+        const formPerusahaanDagang = document.getElementById(
+          "formPerusahaanDagang"
+        );
+        const formPerdagangan = document.getElementById("formPerdagangan");
+        const formEmas = document.getElementById("formEmas");
+        const resultsSection = document.getElementById("resultsSection");
+
+        // hide all forms first
+        formPenghasilan.style.display = "none";
+        formPerusahaanJasa.style.display = "none";
+        formPerusahaanDagang.style.display = "none";
+        formPerdagangan.style.display = "none";
+        formEmas.style.display = "none";
+
+        // hide results when changing type
+        resultsSection.style.display = "none";
+
+        // show selected form
+        if (zakatType === "penghasilan") {
+          formPenghasilan.style.display = "block";
+        } else if (zakatType === "perusahaan_jasa") {
+          formPerusahaanJasa.style.display = "block";
+        } else if (zakatType === "perusahaan_dagang") {
+          formPerusahaanDagang.style.display = "block";
+        } else if (zakatType === "perdagangan") {
+          formPerdagangan.style.display = "block";
+        } else if (zakatType === "emas") {
+          formEmas.style.display = "block";
+        }
+      }
+
+      // calculate Total Penghasilan
+      function calculateTotalPenghasilan() {
+        const gaji = parseFloat(document.getElementById("gaji").value) || 0;
+        const penghasilanLain =
+          parseFloat(document.getElementById("penghasilanLain").value) || 0;
+        const total = gaji + penghasilanLain;
+        document.getElementById("totalPenghasilan").value = total;
+        document.getElementById("penghasilanTahunan").value = total * 12;
+      }
+
+      // calculate Laba Bersih Perusahaan Jasa
+      function calculateLabaBersih() {
+        const pendapatanKotor =
+          parseFloat(document.getElementById("pendapatanKotor").value) || 0;
+        const biayaOperasional =
+          parseFloat(document.getElementById("biayaOperasional").value) || 0;
+        const labaBersih = pendapatanKotor - biayaOperasional;
+        document.getElementById("labaBersih").value =
+          labaBersih > 0 ? labaBersih : 0;
+      }
+
+      // calculate Jumlah Perusahaan Dagang
+      function calculateJumlahPerusahaan() {
+        const aktivaLancar =
+          parseFloat(document.getElementById("aktivaLancar").value) || 0;
+        const pasivaLancar =
+          parseFloat(document.getElementById("pasivaLancar").value) || 0;
+        const jumlah = aktivaLancar - pasivaLancar;
+        document.getElementById("jumlahPerusahaan").value =
+          jumlah > 0 ? jumlah : 0;
+      }
+
+      // calculate Jumlah Perdagangan
+      function calculateJumlahPerdagangan() {
+        const asetLancar =
+          parseFloat(document.getElementById("asetLancar").value) || 0;
+        const laba = parseFloat(document.getElementById("laba").value) || 0;
+        const hutangJatuhTempo =
+          parseFloat(document.getElementById("hutangJatuhTempo").value) || 0;
+        const jumlah = asetLancar + laba - hutangJatuhTempo;
+        document.getElementById("jumlahPerdagangan").value =
+          jumlah > 0 ? jumlah : 0;
+      }
+
+      // fetch Gold Price
+      async function fetchGoldPrice() {
+        const btn = event.target.closest("button");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-arrow-clockwise"></i> Memuat...';
+        btn.disabled = true;
+
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          const simulatedPrice =
+            DEFAULT_HARGA_EMAS + Math.floor(Math.random() * 50000 - 25000);
+          document.getElementById("hargaEmas").value = simulatedPrice;
+          calculateNisab();
+          const now = new Date();
+          const formattedDate = now.toLocaleString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          document.getElementById("goldPriceDate").textContent =
+            "Harga emas terakhir diperbarui: " + formattedDate;
+          btn.innerHTML = '<i class="bi bi-check-circle"></i> Berhasil!';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 2000);
+        } catch (error) {
+          btn.innerHTML = '<i class="bi bi-x-circle"></i> Gagal';
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          }, 2000);
+          alert("Gagal mengambil harga emas. Silakan input manual.");
+        }
+      }
+
+      // add event listeners when DOM loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        const hargaEmasInput = document.getElementById("hargaEmas");
+        if (hargaEmasInput) {
+          hargaEmasInput.value = DEFAULT_HARGA_EMAS;
+          calculateNisab();
+        }
+
+        const pendapatanInput = document.getElementById("pendapatanKotor");
+        const biayaInput = document.getElementById("biayaOperasional");
+        if (pendapatanInput && biayaInput) {
+          pendapatanInput.addEventListener("input", calculateLabaBersih);
+          biayaInput.addEventListener("input", calculateLabaBersih);
+        }
+
+        const aktivaInput = document.getElementById("aktivaLancar");
+        const pasivaInput = document.getElementById("pasivaLancar");
+        if (aktivaInput && pasivaInput) {
+          aktivaInput.addEventListener("input", calculateJumlahPerusahaan);
+          pasivaInput.addEventListener("input", calculateJumlahPerusahaan);
+        }
+
+        const asetInput = document.getElementById("asetLancar");
+        const labaInput = document.getElementById("laba");
+        const hutangInput = document.getElementById("hutangJatuhTempo");
+        if (asetInput && labaInput && hutangInput) {
+          asetInput.addEventListener("input", calculateJumlahPerdagangan);
+          labaInput.addEventListener("input", calculateJumlahPerdagangan);
+          hutangInput.addEventListener("input", calculateJumlahPerdagangan);
+        }
+
+        loadHistory();
+        loadDarkMode();
+      });
+
+      // calculate nisab
+      function calculateNisab() {
+        const hargaEmas =
+          parseFloat(document.getElementById("hargaEmas").value) || 0;
+        const nisabTahun = hargaEmas * NISAB_GRAM;
+        const nisabBulan = nisabTahun / 12;
+        document.getElementById("nisabTahun").textContent =
+          formatCurrency(nisabTahun);
+        document.getElementById("nisabBulan").textContent =
+          formatCurrency(nisabBulan);
+        return { tahun: nisabTahun, bulan: nisabBulan };
+      }
+
+      // Format RP
+      function formatCurrency(number) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        }).format(number);
+      }
+
+      // calculate Zakat
+      function calculateZakat() {
+        const zakatType = document.getElementById("zakatType").value;
+        const hargaEmas =
+          parseFloat(document.getElementById("hargaEmas").value) || 0;
+
+        if (!zakatType) {
+          alert("Silakan pilih jenis zakat terlebih dahulu!");
+          return;
+        }
+
+        if (hargaEmas <= 0) {
+          alert("Silakan masukkan harga emas per gram!");
+          return;
+        }
+
+        let totalHarta = 0;
+        let nisabTahun = hargaEmas * NISAB_GRAM;
+        let isWajib = false;
+        let nisabUsed = 0;
+
+        if (zakatType === "penghasilan") {
+          const gaji = parseFloat(document.getElementById("gaji").value) || 0;
+          const penghasilanLain =
+            parseFloat(document.getElementById("penghasilanLain").value) || 0;
+
+          if (gaji <= 0 && penghasilanLain <= 0) {
+            alert("Silakan masukkan gaji atau penghasilan lain!");
+            return;
+          }
+
+          const penghasilanBulanan = gaji + penghasilanLain;
+          const penghasilanTahunan = penghasilanBulanan * 12;
+          totalHarta = penghasilanTahunan;
+          nisabUsed = nisabTahun;
+          isWajib = totalHarta >= nisabTahun;
+        } else if (zakatType === "perusahaan_jasa") {
+          const labaBersih =
+            parseFloat(document.getElementById("labaBersih").value) || 0;
+
+          if (labaBersih <= 0) {
+            alert("Laba bersih harus lebih dari 0!");
+            return;
+          }
+
+          totalHarta = labaBersih;
+          nisabUsed = nisabTahun;
+          isWajib = totalHarta >= nisabTahun;
+        } else if (zakatType === "perusahaan_dagang") {
+          const aktivaLancar =
+            parseFloat(document.getElementById("aktivaLancar").value) || 0;
+          const pasivaLancar =
+            parseFloat(document.getElementById("pasivaLancar").value) || 0;
+
+          if (aktivaLancar <= 0) {
+            alert("Silakan masukkan aktiva lancar!");
+            return;
+          }
+
+          totalHarta = aktivaLancar - pasivaLancar;
+
+          if (totalHarta <= 0) {
+            alert("Jumlah (Aktiva - Pasiva) harus lebih dari 0!");
+            return;
+          }
+
+          nisabUsed = nisabTahun;
+          isWajib = totalHarta >= nisabTahun;
+        } else if (zakatType === "perdagangan") {
+          const asetLancar =
+            parseFloat(document.getElementById("asetLancar").value) || 0;
+          const laba = parseFloat(document.getElementById("laba").value) || 0;
+          const hutangJatuhTempo =
+            parseFloat(document.getElementById("hutangJatuhTempo").value) || 0;
+
+          if (asetLancar <= 0 && laba <= 0) {
+            alert("Silakan masukkan aset lancar atau laba!");
+            return;
+          }
+
+          totalHarta = asetLancar + laba - hutangJatuhTempo;
+
+          if (totalHarta <= 0) {
+            alert("Jumlah (Aset + Laba - Hutang) harus lebih dari 0!");
+            return;
+          }
+
+          nisabUsed = nisabTahun;
+          isWajib = totalHarta >= nisabTahun;
+        } else if (zakatType === "emas") {
+          const totalEmas =
+            parseFloat(document.getElementById("totalEmas").value) || 0;
+
+          if (totalEmas <= 0) {
+            alert("Silakan masukkan total emas (gram)!");
+            return;
+          }
+
+          isWajib = totalEmas >= NISAB_GRAM;
+          totalHarta = totalEmas * hargaEmas;
+          nisabUsed = nisabTahun;
+        }
+
+        const zakatAmount = isWajib ? totalHarta * ZAKAT_PERCENTAGE : 0;
+        displayResults(totalHarta, nisabUsed, isWajib, zakatAmount);
+
+        if (isWajib && zakatAmount > 0) {
+          saveToHistory(zakatType, totalHarta, zakatAmount);
+        }
+      }
+
+      // display results
+      function displayResults(totalHarta, nisab, isWajib, zakatAmount) {
+        document.getElementById("totalHarta").textContent =
+          formatCurrency(totalHarta);
+        document.getElementById("nilaiNisab").textContent =
+          formatCurrency(nisab);
+
+        const statusElement = document.getElementById("statusZakat");
+        if (isWajib) {
+          statusElement.textContent = "Wajib Zakat ✓";
+          statusElement.className = "result-value status wajib";
+        } else {
+          statusElement.textContent = "Tidak Wajib ✗";
+          statusElement.className = "result-value status tidak-wajib";
+        }
+
+        document.getElementById("jumlahZakat").textContent =
+          formatCurrency(zakatAmount);
+
+        const resultsSection = document.getElementById("resultsSection");
+        resultsSection.style.display = "block";
+        resultsSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      // reset Form
+      function resetForm() {
+        document.getElementById("zakatType").value = "";
+        document.getElementById("gaji").value = "";
+        document.getElementById("penghasilanLain").value = "";
+        document.getElementById("totalPenghasilan").value = "";
+        document.getElementById("penghasilanTahunan").value = "";
+        document.getElementById("pendapatanKotor").value = "";
+        document.getElementById("biayaOperasional").value = "";
+        document.getElementById("labaBersih").value = "";
+        document.getElementById("aktivaLancar").value = "";
+        document.getElementById("pasivaLancar").value = "";
+        document.getElementById("jumlahPerusahaan").value = "";
+        document.getElementById("asetLancar").value = "";
+        document.getElementById("laba").value = "";
+        document.getElementById("hutangJatuhTempo").value = "";
+        document.getElementById("jumlahPerdagangan").value = "";
+        document.getElementById("totalEmas").value = "";
+        document.getElementById("nisabTahun").textContent = "Rp 0";
+        document.getElementById("nisabBulan").textContent = "Rp 0";
+        document.getElementById("formPenghasilan").style.display = "none";
+        document.getElementById("formPerusahaanJasa").style.display = "none";
+        document.getElementById("formPerusahaanDagang").style.display = "none";
+        document.getElementById("formPerdagangan").style.display = "none";
+        document.getElementById("formEmas").style.display = "none";
+        document.getElementById("resultsSection").style.display = "none";
+        calculateNisab();
+      }
+
+      // print/export PDF
+      function printResult() {
+        const resultsSection = document.getElementById("resultsSection");
+        if (resultsSection.style.display === "none") {
+          alert("Silakan hitung zakat terlebih dahulu!");
+          return;
+        }
+        window.print();
+      }
+
+      //  HISTORY FEATURE
+      function saveToHistory(type, total, zakat) {
+        let history = JSON.parse(localStorage.getItem("zakatHistory") || "[]");
+        const typeNames = {
+          penghasilan: "Penghasilan",
+          perusahaan_jasa: "Perusahaan Jasa",
+          perusahaan_dagang: "Perusahaan Dagang",
+          perdagangan: "Perdagangan",
+          emas: "Emas",
+        };
+
+        history.unshift({
+          date: new Date().toISOString(),
+          type: typeNames[type] || type,
+          total: total,
+          zakat: zakat,
+        });
+
+        history = history.slice(0, 10);
+        localStorage.setItem("zakatHistory", JSON.stringify(history));
+        loadHistory();
+      }
+
+      function loadHistory() {
+        const history = JSON.parse(
+          localStorage.getItem("zakatHistory") || "[]"
+        );
+        const historyList = document.getElementById("historyList");
+        const btnClear = document.getElementById("btnClearHistory");
+
+        if (history.length === 0) {
+          historyList.innerHTML =
+            '<li class="history-empty">Belum ada riwayat perhitungan</li>';
+          btnClear.style.display = "none";
+          return;
+        }
+
+        btnClear.style.display = "block";
+        historyList.innerHTML = history
+          .map((item) => {
+            const date = new Date(item.date).toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+
+            return `
+          <li class="history-item">
+            <div class="history-info">
+              <div class="history-type">${item.type}</div>
+              <div class="history-date">${date}</div>
+            </div>
+            <div class="history-amount">${formatCurrency(item.zakat)}</div>
+          </li>
+        `;
+          })
+          .join("");
+      }
+
+      function clearHistory() {
+        if (confirm("Apakah Anda yakin ingin menghapus riwayat perhitungan?")) {
+          localStorage.removeItem("zakatHistory");
+          loadHistory();
+        }
+      }
+
+      // DARK MODE
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        const icons = document.querySelectorAll(
+          "#darkModeIcon, #sidebarDarkModeIcon"
+        );
+        icons.forEach((icon) => {
+          if (isDark) {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          } else {
+            icon.classList.remove("bi-sun-fill");
+            icon.classList.add("bi-moon-fill");
+          }
+        });
+
+        localStorage.setItem("darkMode", isDark);
+      }
+
+      function loadDarkMode() {
+        const isDark = localStorage.getItem("darkMode") === "true";
+        if (isDark) {
+          document.body.classList.add("dark-mode");
+          const icons = document.querySelectorAll(
+            "#darkModeIcon, #sidebarDarkModeIcon"
+          );
+          icons.forEach((icon) => {
+            icon.classList.remove("bi-moon-fill");
+            icon.classList.add("bi-sun-fill");
+          });
+        }
+      }
+
+      //  SIDEBAR
+      function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector(".sidebar-overlay");
+        const hamburger = document.querySelector(".hamburger");
+
+        if (sidebar && overlay && hamburger) {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+          hamburger.classList.toggle("active");
+
+          if (sidebar.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "";
+          }
+        }
+      }
+
+      document.querySelectorAll(".sidebar-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleSidebar();
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          toggleSidebar();
+        }
+      });
+    </script>
+  </body>
+</html>

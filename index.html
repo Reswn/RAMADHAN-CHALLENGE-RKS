@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ramadhan Space 2026</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
 
     <!-- Fonts via Fontsource -->
     <link
@@ -23,6 +24,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -38,9 +40,10 @@
           <a href="#" class="active">Beranda</a>
           <a href="doa.html">Doa</a>
           <a href="zikir.html">Zikir</a>
+          <a href="kalkulator-zakat.html">Kalkulator Zakat</a>
         </nav>
 
-        <a href="#" class="btn-nav">Mulai</a>
+        <!-- <a href="#" class="btn-nav">Mulai</a> -->
 
         <!-- Dark Mode Toggle -->
         <button
@@ -51,7 +54,7 @@
           <i class="bi bi-moon-fill" id="darkModeIcon"></i>
         </button>
 
-        <!-- Hamburger Button u/ sidebar -->
+        <!-- Hamburger Button for sidebar menu-->
         <button
           class="hamburger"
           onclick="toggleSidebar()"
@@ -64,7 +67,7 @@
       </div>
     </header>
 
-    <!-- SIDEBAR OVERLAY & NAVIGATION (Mobile) -->
+    <!-- SIDEBAR OVERLAY AND NAVIGATION ON MOBILE -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <aside class="sidebar">
@@ -86,6 +89,10 @@
           <i class="bi bi-brightness-low"></i>
           Zikir
         </a>
+        <a href="kalkulator-zakat.html">
+          <i class="bi bi-calculator"></i>
+          Kalkulator Zakat
+        </a>
       </nav>
 
       <!-- Dark Mode Toggle in Sidebar -->
@@ -96,9 +103,9 @@
         </button>
       </div>
 
-      <div class="sidebar-btn">
+      <!-- <div class="sidebar-btn">
         <a href="#" class="btn-nav" onclick="toggleSidebar()">Mulai</a>
-      </div>
+      </div> -->
     </aside>
 
     <!-- HERO SECTION -->
@@ -106,10 +113,11 @@
       <div class="container hero-grid">
         <div class="hero-left">
           <span class="badge">Ramadhan 1447 H</span>
-          <h1>Portal Ibadah <span>Ramadhan Space</span></h1>
+          <h1>Temani Ibadah Harianmu dengan <span>Ramadhan Space</span></h1>
           <p>
-            Akses doa-doa dan zikir selama Ramadhan dalam satu platform elegan
-            dan nyaman digunakan. Tingkatkan kualitas ibadahmu di bulan suci.
+            Temukan berbagai doa, zikir, dan fitur kalkulator zakat dalam satu
+            platform yang sederhana, nyaman digunakan, dan membantu menjaga
+            konsistensi ibadah setiap hari.
           </p>
 
           <div class="hero-buttons">
@@ -131,8 +139,8 @@
                 <i class="bi bi-moon"></i>
               </span>
               <div>
-                <div class="floating-card-text">30 Hari</div>
-                <div class="floating-card-sub">Puasa Ramadhan</div>
+                <div class="floating-card-text">Ibadah Harian</div>
+                <div class="floating-card-sub">Doa & Zikir</div>
               </div>
             </div>
 
@@ -141,8 +149,8 @@
                 <i class="bi bi-journal-text icon-md"></i>
               </span>
               <div>
-                <div class="floating-card-text">Doa Lengkap</div>
-                <div class="floating-card-sub">Sahur & Buka</div>
+                <div class="floating-card-text">Amalan Harian</div>
+                <div class="floating-card-sub">Lebih Terarah</div>
               </div>
             </div>
           </div>
@@ -159,7 +167,7 @@
               <i class="bi bi-calendar3 icon-md"></i>
             </div>
             <div class="date-card-label">Tanggal Masehi</div>
-            <div class="date-card-value">Rabu, 04 Maret 2026</div>
+            <div class="date-card-value" id="tanggalMasehi">-</div>
           </div>
 
           <div class="date-card">
@@ -167,15 +175,15 @@
               <i class="bi bi-moon icon-md"></i>
             </div>
             <div class="date-card-label">Tanggal Hijriah</div>
-            <div class="date-card-value hijri">15 Ramadhan 1447 H</div>
+            <div class="date-card-value hijri" id="tanggalHijriah">-</div>
           </div>
 
           <div class="date-card">
             <div class="date-card-icon" aria-hidden="true">
               <i class="bi bi-hourglass-split icon-md"></i>
             </div>
-            <div class="date-card-label">Menuju Syawal</div>
-            <div class="date-card-value">15 Hari Lagi</div>
+            <div class="date-card-label">Menuju 1 Syawal</div>
+            <div class="date-card-value" id="countdownSyawal">- Hari Lagi</div>
           </div>
         </div>
       </div>
@@ -185,13 +193,11 @@
     <section class="doa-preview-section" id="doa-preview">
       <div class="container">
         <div class="section-header">
-          <h1>
-            <span class="section-subtitle">Doa Pilihan</span>
-          </h1>
+          <span class="section-subtitle">Doa Pilihan</span>
           <h2 class="section-title">Doa Hari Ini</h2>
           <p class="section-desc">
-            Bacaan doa yang dapat kamu amalkan hari ini untuk keberkahan
-            Ramadhan.
+            Bacaan doa pilihan yang dapat diamalkan dalam kehidupan sehari-hari
+            untuk menambah keberkahan dan ketenangan hati
           </p>
         </div>
 
@@ -275,12 +281,12 @@
           <span class="section-subtitle">Fitur Unggulan</span>
           <h2 class="section-title">Fitur Utama</h2>
           <p class="section-desc">
-            Semua yang kamu butuhkan untuk menjalani Ramadhan dengan lebih
-            khusyuk dan terorganisir.
+            Fitur yang membantu kamu menjaga konsistensi ibadah melalui doa,
+            zikir, dan pengelolaan zakat dalam satu platform sederhana.
           </p>
         </div>
 
-        <!-- Feature Grid -->
+        <!-- Feature grid -->
         <div class="feature-grid">
           <!-- Feature 1 Kumpulan Doa -->
           <div class="feature-card">
@@ -297,8 +303,7 @@
             <h3>Kumpulan Doa Ramadhan</h3>
             <p>
               Akses lengkap doa sahur, buka puasa, dan doa malam Ramadhan dengan
-              teks Arab, latin, dan artinya serta penghitung zikir yang jelas
-              dan mudah dibaca.
+              teks Arab, latin, dan artinya yang jelas dan mudah dibaca.
             </p>
             <a href="doa.html" class="feature-link">
               Lihat Semua Doa
@@ -335,6 +340,37 @@
               </span>
             </a>
           </div>
+
+          <!-- Feature 3 Kalkulator Zakat -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="4"
+                  y="2"
+                  width="16"
+                  height="20"
+                  rx="2"
+                  stroke-width="2"
+                />
+                <line x1="8" y1="6" x2="16" y2="6" stroke-width="2" />
+                <line x1="8" y1="10" x2="16" y2="10" stroke-width="2" />
+                <line x1="8" y1="14" x2="16" y2="14" stroke-width="2" />
+                <line x1="8" y1="18" x2="16" y2="18" stroke-width="2" />
+              </svg>
+            </div>
+            <h3>Kalkulator Zakat</h3>
+            <p>
+              Hitung zakat penghasilan, emas, dan perdagangan secara otomatis
+              berdasarkan nisab dan persentase zakat 2.5% sesuai syariat.
+            </p>
+            <a href="kalkulator-zakat.html" class="feature-link">
+              Hitung Zakat
+              <span class="icon-circle">
+                <i class="bi bi-arrow-right"></i>
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -342,12 +378,12 @@
     <!-- CTA SECTION -->
     <section class="cta">
       <div class="container cta-box">
-        <h2>Jadikan Ramadhan Lebih Bermakna</h2>
+        <h2>Jadikan Ibadah Lebih Konsisten</h2>
         <p>
-          Mulai dari doa sederhana, menuju perubahan besar. Mari sambut bulan
-          suci dengan persiapan terbaik.
+          Mulai dari doa sederhana hingga zikir harian. Bangun kebiasaan ibadah
+          yang lebih baik sedikit demi sedikit setiap hari.
         </p>
-        <a href="doa.html" class="btn-primary">Mulai Sekarang</a>
+        <a href="index.html" class="btn-primary">Mulai Sekarang</a>
       </div>
     </section>
 
@@ -367,7 +403,10 @@
             <h4>Navigasi</h4>
             <a href="#"><i class="bi bi-house"></i> Beranda</a>
             <a href="doa.html"><i class="bi bi-book"></i> Doa</a>
-            <a href="zikir.html"><i class="bi bi-brightness-low"></i>Zikir</a>
+            <a href="zikir.html"><i class="bi bi-brightness-low"></i> Zikir</a>
+            <a href="kalkulator-zakat.html"
+              ><i class="bi bi-calculator"></i> Kalkulator Zakat</a
+            >
           </div>
 
           <div class="footer-links">
@@ -415,8 +454,93 @@
         </div>
       </div>
     </footer>
-    <!-- JS FOR DARKMODE -->
+
+    <!-- JAVASCRIPT -->
     <script>
+      // DATE N COUNTDOWN
+      function updateDates() {
+        const now = new Date();
+
+        // 1. Update Tanggal Masehi (Gregorian)
+        const optionsMasehi = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const tanggalMasehi = now.toLocaleDateString("id-ID", optionsMasehi);
+        document.getElementById("tanggalMasehi").textContent = tanggalMasehi;
+
+        // 2. update Tanggal Hijriah
+        try {
+          const optionsHijriah = {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            calendar: "islamic-umalqura",
+          };
+          const tanggalHijriah = new Intl.DateTimeFormat(
+            "id-ID-u-ca-islamic-umalqura",
+            optionsHijriah
+          ).format(now);
+          document.getElementById("tanggalHijriah").textContent =
+            tanggalHijriah + " H";
+
+          // 3. calculate Countdown based on Hijiriah date
+          const hijriDay = now.toLocaleDateString(
+            "en-US-u-ca-islamic-umalqura",
+            {
+              day: "numeric",
+              calendar: "islamic-umalqura",
+            }
+          );
+
+          const hijriMonth = now.toLocaleDateString(
+            "en-US-u-ca-islamic-umalqura",
+            {
+              month: "numeric",
+              calendar: "islamic-umalqura",
+            }
+          );
+
+          const currentDay = parseInt(hijriDay);
+          const currentMonth = parseInt(hijriMonth);
+          const ramadanDays = 30;
+
+          const countdownElement = document.getElementById("countdownSyawal");
+
+          if (currentMonth === 9) {
+            // ramadan is 9th month in Islamic calendar
+            const remainingDays = ramadanDays - currentDay;
+
+            if (remainingDays > 0) {
+              countdownElement.textContent = `${remainingDays} Hari Lagi`;
+              countdownElement.style.color = "var(--primary-color)";
+            } else if (remainingDays === 0) {
+              countdownElement.textContent = "Hari Ini!";
+              countdownElement.style.color = "#f59e0b";
+            } else {
+              countdownElement.textContent = "Selamat Idul Fitri!";
+              countdownElement.style.color = "#10b981";
+            }
+          } else if (currentMonth > 9) {
+            // after Ramadan
+            countdownElement.textContent = "Selamat Idul Fitri!";
+            countdownElement.style.color = "#10b981";
+          } else {
+            // before Ramadan
+            countdownElement.textContent = "Menuju Ramadan";
+            countdownElement.style.color = "var(--text-muted)";
+          }
+        } catch (error) {
+          // do fallback if calendar didnt support
+          document.getElementById("tanggalHijriah").textContent =
+            "16 Ramadan 1447 H";
+          document.getElementById("countdownSyawal").textContent =
+            "14 Hari Lagi";
+        }
+      }
+
       // DARK MODE
       function toggleDarkMode() {
         document.body.classList.toggle("dark-mode");
@@ -440,7 +564,7 @@
         localStorage.setItem("darkMode", isDark);
       }
 
-      // Load dark mode preference
+      // Load dark mode
       function loadDarkMode() {
         const isDark = localStorage.getItem("darkMode") === "true";
         if (isDark) {
@@ -455,7 +579,7 @@
         }
       }
 
-      // SIDEBAR FUNCTIONALITY
+      //  SIDEBAR FUNCTIONAL
       function toggleSidebar() {
         const sidebar = document.querySelector(".sidebar");
         const overlay = document.querySelector(".sidebar-overlay");
@@ -474,23 +598,27 @@
         }
       }
 
-      // Close sidebar when we click
+      // Close sidebar when u click
       document.querySelectorAll(".sidebar-menu a").forEach((link) => {
         link.addEventListener("click", () => {
           toggleSidebar();
         });
       });
 
-      // Close sidebar on esc
+      // Close sidebar on ESC key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           toggleSidebar();
         }
       });
 
-      // Load dark mode on page load
+      // Load on page load
       window.addEventListener("DOMContentLoaded", () => {
         loadDarkMode();
+        updateDates();
+
+        // Update countdown every minutte
+        setInterval(updateDates, 60000);
       });
     </script>
   </body>
